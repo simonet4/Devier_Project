@@ -8,7 +8,7 @@ document.getElementById("chat-icon").addEventListener("click", function () {
     // Message d’accueil au premier clic
     if (firstOpen) {
         let body = document.querySelector(".chat-body");
-        body.innerHTML += `<p class="bot-msg"><strong>Bot:</strong> Bonjour ! Comment puis-je t’aider aujourd’hui ? 😊</p>`;
+        body.innerHTML += `<p class="bot-msg"><strong>Moustache : </strong> Salutations. Je suis Moustache, maître penseur félin. Expose-moi ton questionnement, mortel.</p>`;
         firstOpen = false;
     }
 });
@@ -25,10 +25,22 @@ document.getElementById("chat-form").addEventListener("submit", function(e) {
     let body = document.querySelector(".chat-body");
 
     // Afficher le message utilisateur dans la box
-    body.innerHTML += `<p class="user-msg"><strong>Vous:</strong> ${message}</p>`;
+    body.innerHTML += `<p class="user-msg"><strong>Vous : </strong> ${message}</p>`;
 
     // Scroll auto en bas
     body.scrollTop = body.scrollHeight;
+
+    // Ajouter l'indicateur "bot en train d'écrire"
+    let typingIndicator = `
+        <div id="typing-indicator" class="bot-msg typing">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>`;
+
+    body.innerHTML += typingIndicator;
+    body.scrollTop = body.scrollHeight;
+
 
     // Envoi AJAX vers le PHP
     fetch("chatbot.php", {
@@ -38,7 +50,12 @@ document.getElementById("chat-form").addEventListener("submit", function(e) {
     })
     .then(res => res.text())
     .then(reply => {
-        body.innerHTML += `<p class="bot-msg"><strong>Bot:</strong> ${reply}</p>`;
+        // Retirer l’indicateur de chargement
+        let typing = document.getElementById("typing-indicator");
+        if (typing) typing.remove();
+
+        // Afficher la réponse brute
+        body.innerHTML += `<p class="bot-msg"><strong>Moustache : </strong> ${reply}</p>`;
         body.scrollTop = body.scrollHeight;
     });
 
