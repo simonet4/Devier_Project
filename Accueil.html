@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'accueil NIRD</title>
+    <link href="style.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">N</div>
+                <h1>NIRD</h1>
+            </div>
+
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <span id="burger"></span>
+            </button>
+
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">Page 1</a></li>
+                    <li><a href="#">Page 2</a></li>
+                    <li><a href="#">Page 3</a></li>
+                    <li><a href="#">Page 4</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="hero">
+            <h2>Bienvenue au lycée Ada Lovelace</h2>
+            <p></p>
+            <a href="#portfolio" class="btn btn-periwinkle">Commencer</a>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('mainNav');
+            const burger = document.getElementById('burger');
+
+            nav.classList.toggle('active');
+            burger.classList.toggle('open');
+        }
+    </script>
+
+
+</body>
+
+
+</html>

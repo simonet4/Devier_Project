@@ -1,0 +1,233 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url("image.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #EADEDA;
+    line-height: 1.6;
+}
+
+header {
+    background: #EADEDA;
+    padding: 20px 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #22223B;
+    margin: 0;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #B58AFF, #8AFF5B);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.menu-toggle {
+    display: block;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+#burger {
+    width: 30px;
+    height: 2px;
+    background: #22223B;
+    display: block;
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+#burger::before,
+#burger::after {
+    content: '';
+    width: 30px;
+    height: 2px;
+    background: #22223B;
+    display: block;
+    position: absolute;
+    left: 0;
+    transform-origin: center;
+    transition: all 0.3s ease;
+}
+
+#burger::before {
+    top: -8px;
+}
+
+#burger::after {
+    top: 8px;
+}
+
+#burger.open {
+    background: transparent;
+}
+
+#burger.open::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+#burger.open::after {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+nav.active {
+    display: flex;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    color: #22223B;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-weight: 600;
+    transition: all 0.3s;
+    border-radius: 25px;
+    border: 2px solid transparent;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+nav a:hover {
+    background: #B58AFF;
+    color: white;
+    border-color: #B58AFF;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 968px) {
+    nav a {
+        font-size: 16px;
+    }
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 40px;
+}
+
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #B58AFF, #8AFF5B);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #EADEDA;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 35px;
+    margin: 10px;
+    background: #B58AFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: 2px solid #B58AFF;
+}
+
+.btn:hover {
+    background: transparent;
+    color: #B58AFF;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(181, 138, 255, 0.3);
+}
+
+.btn-periwinkle {
+    background: #8AFF5B;
+    color: #22223B;
+    border-color: #8AFF5B;
+}
+
+.btn-periwinkle:hover {
+    background: transparent;
+    color: #8AFF5B;
+    box-shadow: 0 8px 20px rgba(138, 255, 91, 0.3);
+}
+
+.btn-neon {
+    background: transparent;
+    color: #EADEDA;
+    border-color: #EADEDA;
+}
+
+.btn-neon:hover {
+    background: #EADEDA;
+    color: #22223B;
+    box-shadow: 0 8px 20px rgba(234, 222, 218, 0.3);
+}
