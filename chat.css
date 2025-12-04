@@ -64,30 +64,37 @@ Texte : #333
 }
 
 
-/* -----------  IMAGE PENCHÉE ----------- */
-#chat-corner-icon {
-    position: absolute;
-    top: -18px;
-    left: -18px;
-    width: 85px;
-    transform: rotate(-15deg);
-    z-index: 10000;
-}
-
-
-/* -----------  HEADER ----------- */
+/* HEADER */
 .chat-header {
-    font-family: "Nunito", sans-serif;
-    font-weight: 700; /* équivalent de bold */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* centre Moustache */
+    gap: 10px;               /* espace entre texte et image */
+
     background: #ffbb33;
     padding: 14px;
-    font-size: 17px;
+    font-size: 22px;          /* Police agrandie */
+    font-weight: 700;
     color: white;
     text-align: center;
 
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
+
+/* Texte du header */
+.header-title {
+    font-family: "Nunito", sans-serif;
+}
+
+/* Image à droite du texte */
+#chat-corner-icon {
+    width: 32px;      /* ajustable */
+    height: 32px;     /* carré propre */
+    margin-left: 6px; /* petit espace */
+    transform: none;  /* aucune rotation */
+}
+
 
 
 
