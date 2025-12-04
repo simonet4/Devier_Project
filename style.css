@@ -177,6 +177,7 @@ nav a:hover {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    filter: drop-shadow(2px 2px 0 #22223B) drop-shadow(-2px -2px 0 #22223B) drop-shadow(2px -2px 0 #22223B) drop-shadow(-2px 2px 0 #22223B) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
 }
 
 .hero p {
@@ -230,4 +231,75 @@ nav a:hover {
     background: #EADEDA;
     color: #22223B;
     box-shadow: 0 8px 20px rgba(234, 222, 218, 0.3);
+}
+
+footer {
+    background: #EADEDA;
+    color: #22223B;
+    padding: 60px 40px 30px;
+    margin-top: 80px;
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.footer-section h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #22223B;
+    font-weight: 700;
+}
+
+.footer-section p,
+.footer-section a {
+    color: #22223B;
+    text-decoration: none;
+    line-height: 2;
+    display: block;
+    transition: all 0.3s;
+}
+
+.footer-section a:hover {
+    color: #B58AFF;
+    transform: translateX(5px);
+}
+
+.footer-bottom {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-top: 30px;
+    border-top: 2px solid #22223B;
+    text-align: center;
+    color: #22223B;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #B58AFF, #8AFF5B);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 5px 15px rgba(181, 138, 255, 0.5);
 }
