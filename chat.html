@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mon site</title>
+    <link rel="stylesheet" href="chat.css">
+</head>
+
+<body>
+<!-- Icône flottante -->
+<div id="chat-icon">
+    <img src="icon.png" alt="Chat">
+</div>
+<!-- Bulle de chat -->
+<div id="chat-box">
+    <div class="chat-header">Chatbot</div>
+
+    <div class="chat-body"></div>
+
+    <form id="chat-form">
+        <div class="chat-footer">
+            <input type="text" id="user-message" name="message" placeholder="Écrire..." required>
+            <button type="submit">Envoyer</button>
+        </div>
+    </form>
+</div>
+
+<script src="chat.js"></script>
+</body>
+</html>
