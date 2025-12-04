@@ -13,7 +13,7 @@ document.getElementById("chat-icon").addEventListener("click", function () {
         let body = document.querySelector(".chat-body");
         body.innerHTML += `
         <div class="bot-line">
-            <img src="chatbot.png" class="bot-avatar" alt="Moustache">
+            <img src="chatbotpp.png" class="bot-avatar" alt="Moustache">
             <div class="bot-bubble">
                 <strong>Moustache : </strong> Salutations. Je suis Moustache, maître penseur félin. Expose-moi ton questionnement, mortel.
             </div>
@@ -52,7 +52,6 @@ document.getElementById("chat-form").addEventListener("submit", function(e) {
         </div>`;
     body.innerHTML += typingIndicator;
     body.scrollTop = body.scrollHeight;
-
     // Envoi AJAX vers le PHP
     fetch("chatbot.php", {
         method: "POST",
@@ -68,7 +67,7 @@ document.getElementById("chat-form").addEventListener("submit", function(e) {
         // Afficher la réponse du bot
         body.innerHTML += `
             <div class="bot-line">
-                <img src="chatbot.png" class="bot-avatar" alt="Moustache">
+                <img src="chatbotpp.png" class="bot-avatar" alt="Moustache">
                 <div class="bot-bubble">
                     <strong>Moustache : </strong> ${reply}
                 </div>
