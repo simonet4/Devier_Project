@@ -535,9 +535,11 @@ input[type="range"]::-webkit-slider-thumb:hover {
     max-width: 1100px;
     margin: 50px auto;
     padding: 50px;
-    background: #EADEDA; /* Fond principal clair */
+    background: #EADEDA;
+    /* Fond principal clair */
     border-radius: 20px;
-    border: 4px solid #22223B; /* Contour bleu nuit */
+    border: 4px solid #22223B;
+    /* Contour bleu nuit */
     box-shadow: 0 0 30px rgba(34, 34, 59, 0.4);
     font-family: Arial, sans-serif;
 }
@@ -587,13 +589,15 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 /* Survol */
 .q-option:hover {
-    background: #B58AFF; /* Violet pastel */
+    background: #B58AFF;
+    /* Violet pastel */
     color: #22223B;
-    border-color: #410554; /* Violet profond */
+    border-color: #410554;
+    /* Violet profond */
 }
 
 /* Sélection visuelle */
-.q-option input[type="radio"]:checked + span {
+.q-option input[type="radio"]:checked+span {
     font-weight: 900;
     color: #410554;
     text-decoration: underline;
@@ -601,7 +605,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 /* ----- BONNE RÉPONSE ----- */
 .qcm-correct {
-    background: #8AFF5B !important; /* Vert fluo */
+    background: #8AFF5B !important;
+    /* Vert fluo */
     border-color: #2d7f14 !important;
     color: #0a3c05 !important;
     font-weight: bold;
@@ -609,7 +614,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 /* ----- MAUVAISE RÉPONSE ----- */
 .qcm-wrong {
-    background: #B58AFF !important; /* Violet clair */
+    background: #B58AFF !important;
+    /* Violet clair */
     border-color: #410554 !important;
     color: #22223B !important;
     font-weight: bold;
@@ -621,7 +627,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
     padding: 25px;
     font-size: 32px;
     font-weight: 900;
-    background: #410554; /* Violet profond */
+    background: #410554;
+    /* Violet profond */
     color: #EADEDA;
     border-radius: 20px;
     border: 4px solid #22223B;
@@ -630,7 +637,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 #qcm-submit:hover {
-    background: #22223B; /* Bleu nuit */
+    background: #22223B;
+    /* Bleu nuit */
     color: #EADEDA;
 }
 
