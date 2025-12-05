@@ -922,7 +922,7 @@ footer {
     --green: #8AFF5B;
 }
 
-.container {
+.container_ {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px;

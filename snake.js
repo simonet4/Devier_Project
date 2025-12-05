@@ -5,7 +5,7 @@ const boxWidth = 9
 var velocity = 1
 const canvaHeight = boxHeight*cellSize
 const canvaWidth = boxWidth*cellSize
-const refreshRate = 200
+var refreshRate = 200
 const snakePadding = 2
 var mySnakeHead
 
@@ -239,6 +239,7 @@ function checkFood() {
         f = foodArray[i]
         if (mySnakeHead.x == f[0] && mySnakeHead.y == f[1]) {
             tailLength ++
+            refreshRate -= 2
             foodArray.splice(i, 1)
             spawnFood()
         } 
@@ -251,6 +252,7 @@ function checkCollision() {
         if (mySnakeHead.x == e[0] && mySnakeHead.y == e[1]) {
             tailLength = 0
             tailPieces = []
+            refreshRate = 200
         }
     }
 }
