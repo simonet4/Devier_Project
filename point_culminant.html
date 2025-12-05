@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Début de l'histoire NIRD</title>
+    <link href="style.css" rel="stylesheet" />
+</head>
+
+<body class="unselectable">
+
+    <canvas id="interactive-bg"></canvas>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">N</div>
+                <h1>NIRD</h1>
+            </div>
+
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <span id="burger"></span>
+            </button>
+
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="#" class="active-link">L'Histoire</a></li>
+                    <li><a href="#">Page 2</a></li>
+                    <li><a href="#">Page 3</a></li>
+                    <li><a href="#">Page 4</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('mainNav');
+            const burger = document.getElementById('burger');
+
+            nav.classList.toggle('active');
+            burger.classList.toggle('open');
+        }
+    </script>
+
+    <div class="container zoom">
+        <div class="content-section">
+
+            <div class="content-layout">
+                <div class="image-placeholder">
+                </div>
+                <div id="dialogue-box">
+                    <div id="dialogue-text"></div>
+                    <div id="dialogue-next">▶</div>
+                </div>
+                <div class="button-group">
+                    <a href="DeuxièmePage.html" id="next-page-btn" class="btn-outline"
+                        style="display: none;">Suivant</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Utilisation du même script.js -->
+    <script src="script.js"></script>
+
+</body>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>NIRD</h3>
+            <p>Lycée Ada Lovelace</p>
+            <p>Excellence et innovation depuis 2024</p>
+        </div>
+
+        <div class="footer-section">
+            <h3>Navigation</h3>
+            <a href="index.html">Accueil</a>
+            <a href="débutHistoire.html">L'Histoire</a>
+            <a href="#">Page 2</a>
+            <a href="#">Page 3</a>
+            <a href="#">Page 4</a>
+        </div>
+        <script>
+            function toggleMenu() {
+                const nav = document.getElementById('mainNav');
+                const burger = document.getElementById('burger');
+                nav.classList.toggle('active');
+                burger.classList.toggle('open');
+            }
+            const dialogues = [
+                { text: "<b>Alice</b> : Pff… on n’y arrivera jamais.", image: "pavoshko_et_les_2_lyceens.webp" },
+                { text: "<b>Robert</b> : On a tout donné… et pour rien.", image: "pavoshko_et_les_2_lyceens.webp" },
+                { text: "Soudain, le chatbot du lycée (qui ne comprenait jamais rien) affiche :", image: "2_lyceens_chabruti.webp" },
+                { text: "<b>“Analyse miautomatique : passer sous Linux permettrait d’économiser environ 800 % du budget informatique sur 5 ans, ça en fait des croquettes… Réduction massive de la dépendance aux Big Tech.</b>", image: "pavoshko_et_les_2_lyceens.webp" },
+                { text: "<b>Pavoshko</b> : …Quoi ?", image: "2_lyceens_chabruti.webp" },
+                { text: "<b>Alice</b> : Même le chatbot le dit !", image: "pavoshko_et_les_2_lyceens.webp" },
+                { text: "<b>Robert</b> : C’est grâce au NIRD ! On lui a montré des ressources libres.", image: "pavoshko_et_les_2_lyceens.webp" },
+                { text: "<b>Pavoshko</b> : D’accord… on adopte Linux.", image: "pavoshko_et_les_2_lyceens.webp" }
+            ];
+            let index = 0;
+            let charIndex = 0;
+            let isTyping = false;
+
+            const imagePlaceholder = document.querySelector(".image-placeholder");
+            const textBox = document.getElementById("dialogue-text");
+            const nextBtn = document.getElementById("dialogue-next");
+            const nextPageBtn = document.getElementById("next-page-btn");
+
+            function typeDialogueHTML() {
+                isTyping = true;
+                const current = dialogues[index];
+                textBox.innerHTML = current.text.substring(0, charIndex);
+                charIndex++;
+
+                if (charIndex <= current.text.length) {
+                    setTimeout(typeDialogueHTML, 20);
+                } else {
+                    isTyping = false;
+                    imagePlaceholder.style.backgroundImage = `url('${current.image}')`;
+
+                    if (index < dialogues.length - 1) {
+                        nextBtn.style.display = "block";
+                    } else {
+                        nextBtn.style.display = "none";
+                        nextPageBtn.style.display = "block";
+                    }
+                }
+            }
+
+            function nextDialogue() {
+                if (isTyping) return;
+
+                if (index < dialogues.length - 1) {
+                    nextBtn.style.display = "none";
+                    index++;
+                    charIndex = 0;
+                    typeDialogueHTML();
+                }
+            }
+
+            document.addEventListener("click", nextDialogue);
+            nextBtn.addEventListener("click", nextDialogue);
+
+            typeDialogueHTML();
+        </script>
+
+        <footer>
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>NIRD</h3>
+                    <p>Lycée Ada Lovelace</p>
+                    <p>Excellence et innovation depuis 2024</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Navigation</h3>
+                    <a href="#">Accueil</a>
+                    <a href="#">Page 1</a>
+                    <a href="#">Page 2</a>
+                    <a href="#">Page 3</a>
+                    <a href="#">Page 4</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <a href="mailto:contact@nird.fr">contact@nird.fr</a>
+                    <a href="tel:+33123456789">+33 1 23 45 67 89</a>
+                    <p>123 Rue de l'Innovation<br>31000 Toulouse</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Suivez-nous</h3>
+                    <div class="social-links">
+                        <a href="#" title="Facebook">F</a>
+                        <a href="#" title="Twitter">T</a>
+                        <a href="#" title="Instagram">I</a>
+                        <a href="#" title="LinkedIn">L</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 NIRD - Lycée Ada Lovelace. Tous droits réservés.</p>
+            </div>
+        </footer>
+        </body>
+
+</html>
