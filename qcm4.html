@@ -6,27 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NIRD - Visualiseur Interactif</title>
     <link href="style.css" rel="stylesheet" />
-    <link href="./chatbot/chat.css" rel="stylesheet" />
+    <link href="./chatbot/chat.css" rel="stylesheet"/>
 </head>
 
 <body class="unselectable">
     <canvas id="interactive-bg"></canvas>
     <header>
         <div class="header-container">
-            <div class="logo">
-                <div class="logo-icon">N</div>
-                <h1>NIRD</h1>
-            </div>
+            <a href="index.html" class="logo-link">
+                <div class="logo">
+                    <div class="logo-icon">N</div>
+                    <h1>NIRD</h1>
+                </div>
+            </a>
+
             <button class="menu-toggle" onclick="toggleMenu()">
                 <span id="burger"></span>
             </button>
+
             <nav id="mainNav">
                 <ul>
-                    <li><a href="#">Accueil / Visualiseur</a></li>
+                    <li><a href="index.html">Accueil / Visualiseur</a></li>
                     <li><a href="débutHistoire.html">L'Histoire</a></li>
-                    <li><a href="#">Page 2</a></li>
-                    <li><a href="#" class="active-link">QCM</a></li>
-                    <li><a href="#">Page 4</a></li>
+                    <li><a href="crédits.html">Crédits</a></li>
+                    <li><a href="ressources.html" target="_blank">Ressources</a></li>
                 </ul>
             </nav>
         </div>
@@ -85,27 +88,25 @@
         <div class="footer-container">
             <div class="footer-section">
                 <h3>NIRD et sources</h3>
-                <a href="https://nird.forge.apps.education.fr/" target="_blank">Site officiel de la démarche NIRD</a>
-                <a href="https://video.echirolles.fr/w/hVykGUtRZqRen6eiutqRvQ" target="_blank">Vidéo : les logiciels
-                    libres</a>
-                <a href="https://www.radiofrance.fr/franceinter/podcasts/le-grand-reportage-de-france-inter/le-grand-reportage-du-mardi-14-octobre-2025-4136495"
-                    target="_blank">Podcast : les logiciels libres</a>
-                <a href="https://www.youtube.com/watch?v=76T8oubek-c" target="_blank">Vidéo : jeter des milliers
-                    d'ordinateurs ?</a>
-                <a href="https://www.youtube.com/watch?v=S6GLqkhykmA" target="_blank">Vidéo : l'ordinateur obsolète</a>
+                <a href = "https://nird.forge.apps.education.fr/" target="_blank">Site officiel de la démarche NIRD</a>
+                <a href = "https://video.echirolles.fr/w/hVykGUtRZqRen6eiutqRvQ" target="_blank">Vidéo : les logiciels libres</a>
+                <a href = "https://www.radiofrance.fr/franceinter/podcasts/le-grand-reportage-de-france-inter/le-grand-reportage-du-mardi-14-octobre-2025-4136495" target="_blank">Podcast : les logiciels libres</a>
+                <a href = "https://www.youtube.com/watch?v=76T8oubek-c" target="_blank">Vidéo : jeter des milliers d'ordinateurs ?</a>
+                <a href = "https://www.youtube.com/watch?v=S6GLqkhykmA" target="_blank">Vidéo : l'ordinateur obsolète</a>
             </div>
 
             <div class="footer-section">
                 <h3>Navigation</h3>
                 <a href="#">Accueil</a>
                 <a href="débutHistoire.html">L'Histoire</a>
-                <a href="#">Page 2</a>
-                <a href="#">Page 3</a>
-                <a href="#">Page 4</a>
+                <a href="crédits.html">Crédits</a>
+                <a href="ressources.html" target="_blank">Ressources</a>
             </div>
 
             <div class="footer-section">
-                <h3>Jeu snake</h3>
+                <a href="snake.html" target="_blank">
+                    <h3>Jeu snake</h3>
+                </a>
                 <a href="#" data-popup="J't'ai bien eu !">Je suis le vrai jeu snake !</a>
                 <a href="#" data-popup="Eh bien enfait... non.">Non, c'est moi !</a>
                 <a href="#" data-popup="C'était vraiment pas moi.">En tout cas, c'est pas moi.</a>
@@ -113,7 +114,7 @@
             </div>
             <script>
                 document.querySelectorAll('a[data-popup]').forEach(link => {
-                    link.addEventListener('click', function (event) {
+                    link.addEventListener('click', function(event) {
                         event.preventDefault(); // Empêche le comportement par défaut du lien
                         const message = this.getAttribute('data-popup'); // Récupère le texte
                         alert(message); // Affiche la popup
@@ -137,7 +138,7 @@
 
             nav.classList.toggle('active');
             burger.classList.toggle('open');
-
+            
             // Si la barre de contrôle existe sur cette page, on la cache/affiche
             if (ui) {
                 ui.classList.toggle('hidden');
@@ -146,6 +147,7 @@
     </script>
 
     <script src="script.js"></script>
+
     <!-- ChatBox -->
     <div id="chat-icon">
         <img src="./chatbot/chatbotreact.png" alt="Chat">

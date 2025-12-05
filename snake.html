@@ -7,6 +7,7 @@
             startGame()
         </script>
         <link href="stylesnake.css" rel="stylesheet" />
+        <link href="./chatbot/chat.css" rel="stylesheet"/>
     </head>
     <body>
         <h2 class="title">Vous êtes Microsoft. </h2>
@@ -57,5 +58,22 @@
                 <p>&copy; 2025 Dev'ier - IUT Informatique de Toulouse. Tous droits réservés.</p>
             </div>
         </footer>
+        <div id="chat-icon">
+        <img src="./chatbot/chatbotreact.png" alt="Chat">
+        </div>
+        <div id="chat-box">
+            <div class="chat-header">
+                <span class="header-title">Moustache</span>
+                <img id="chat-corner-icon" src="./chatbot/pate.png" alt="icone">
+            </div>
+            <div class="chat-body"></div>
+            <form id="chat-form">
+                <div class="chat-footer">
+                    <input type="text" id="user-message" name="message" placeholder="Écrire..." required>
+                    <button type="submit">Envoyer</button>
+                </div>
+            </form>
+        </div>
+        <script src="./chatbot/chat.js"></script>
     </body>
 </html>
