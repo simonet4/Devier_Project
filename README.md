@@ -7,9 +7,9 @@
 
 ## 📖 Le Sujet : Le Village Numérique Résistant
 
-[cite_start]Face à la fin du support de Windows 10 et à l'hégémonie des GAFAM, ce projet propose une solution pour aider les établissements scolaires à "tenir tête aux Big Tech"[cite: 8].
+Face à la fin du support de Windows 10 et à l'hégémonie des GAFAM, ce projet propose une solution pour aider les établissements scolaires à "tenir tête aux Big Tech".
 
-[cite_start]Notre application web promeut la démarche **NIRD** (Numérique Inclusif, Responsable et Durable) [cite: 12] à travers une expérience narrative et interactive. Elle démontre comment le logiciel libre (Linux) peut sauver le matériel de l'obsolescence programmée.
+Notre application web promeut la démarche **NIRD** (Numérique Inclusif, Responsable et Durable) à travers une expérience narrative et interactive. Elle démontre comment le logiciel libre (Linux) peut sauver le matériel de l'obsolescence programmée.
 
 ---
 
@@ -26,7 +26,7 @@ Nous avons intégré un Snake satirique qui dénonce la collecte de données, ca
     * **Nourriture :** Bases de données personnelles.
     * **Corps :** Pièces de monnaie (le capital).
     * **Fond :** Code "Matrix" vert.
-* **Activation :** *(Cliquez sur le logo NIRD 5 fois / Ou appuyez sur la touche 'S' / Ou via l'url `snake.html`)*.
+* **Activation :** *(Cliquez sur le titre jeu snake dans le footer de la page!).
 
 ### 2. 🤖 Défi VIVERIS : "Chat'bruti"
 **Objectif :** Créer un chatbot "complètement à côté de la plaque".
