@@ -48,9 +48,13 @@ Notre page d'accueil est un visualiseur audio interactif développé en pur Java
 ### 4. 🖱️ Défi CAPCOD : "Hair'gonomie"
 **Objectif :** Repenser l'ergonomie sans conventions.
 
-Nous avons alterné entre deux styles ergonomiques opposés pour marquer la rupture technologique :
+Nous avons adopté un style graphique agréable et moderne :
 * **Glassmorphism Moderne :** Fluide et transparent pour le futur (NIRD).
-* **Pixel Art Rétro :** Interface brute et nostalgique pour rappeler les racines de l'informatique, cassant les codes du web design lisse actuel.
+
+### 5. 🎮Défi IUTLCO : "On veut du gros pixel !"
+**Objectif :** Ajouter un élément rétro gaming à l'une des pages
+
+Une des pages durant la narration est stylisée "pixel art" !
 
 ---
 
