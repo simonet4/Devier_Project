@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIRD - Visualiseur Interactif</title>
+    <link href="style.css" rel="stylesheet" />
+    <link href="./chatbot/chat.css" rel="stylesheet"/>
+</head>
+
+<body class="unselectable">
+    <canvas id="interactive-bg"></canvas>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">N</div>
+                <h1>NIRD</h1>
+            </div>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <span id="burger"></span>
+            </button>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#">Accueil / Visualiseur</a></li>
+                    <li><a href="débutHistoire.html">L'Histoire</a></li>
+                    <li><a href="#">Page 2</a></li>
+                    <li><a href="#" class="active-link">QCM</a></li>
+                    <li><a href="#">Page 4</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <div id="qcm-container">
+            <h2>QCM  – Discussion avec l’administration</h2>
+            <form id="qcm-form">
+                <!-- QUESTION 1 -->
+                <div class="qcm-question">
+                    <p class="q-title">1. Pourquoi les PC du lycée rament selon Robert et Alice ?</p>
+
+                    <label class="q-option">
+                        <input type="radio" name="q1" value="A">
+                        A. Parce qu’ils sont trop vieux pour Windows 11
+                    </label>
+
+                    <label class="q-option">
+                        <input type="radio" name="q1" value="B">
+                        B. Parce qu’ils sont maudits
+                    </label>
+
+                    <label class="q-option">
+                        <input type="radio" name="q1" value="C">
+                        C. Parce qu’ils n’ont plus de batterie
+                    </label>
+                </div>
+
+                <!-- QUESTION 2 -->
+                <div class="qcm-question">
+                    <p class="q-title">2. Pourquoi Linux serait utile au lycée ?</p>
+
+                    <label class="q-option">
+                        <input type="radio" name="q2" value="A">
+                        A. Il est gratuit et léger
+                    </label>
+
+                    <label class="q-option">
+                        <input type="radio" name="q2" value="B">
+                        B. Il permet de jouer à Fortnite plus vite
+                    </label>
+
+                    <label class="q-option">
+                        <input type="radio" name="q2" value="C">
+                        C. Il supprime les devoirs
+                    </label>
+                </div>
+
+                <!-- QUESTION 3 -->
+                <div class="qcm-question">
+                    <p class="q-title">3. Que disent Alice et Robert sur les Big Tech ?</p>
+
+                    <label class="q-option">
+                        <input type="radio" name="q3" value="A">
+                        A. Elles collectent énormément de données personnelles
+                    </label>
+
+                    <label class="q-option">
+                        <input type="radio" name="q3" value="B">
+                        B. Elles vendent des frites
+                    </label>
+
+                    <label class="q-option">
+                        <input type="radio" name="q3" value="C">
+                        C. Elles sont toutes françaises
+                    </label>
+                </div>
+                <button id="qcm-submit" type="button">Valider le QCM</button>
+                <div id="qcm-result"></div>
+            </form>
+        </div>
+        <script src="./qcm.js"></script>
+    </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>NIRD</h3>
+                <p>Lycée Ada Lovelace</p>
+                <p>Excellence et innovation depuis 2024</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Navigation</h3>
+                <a href="#">Accueil</a>
+                <a href="débutHistoire.html">L'Histoire</a>
+                <a href="#">Page 2</a>
+                <a href="#">Page 3</a>
+                <a href="#">Page 4</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <a href="mailto:contact@nird.fr">contact@nird.fr</a>
+                <a href="tel:+33123456789">+33 1 23 45 67 89</a>
+                <p>123 Rue de l'Innovation<br>31000 Toulouse</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Suivez-nous</h3>
+                <div class="social-links">
+                    <a href="#" title="Facebook">F</a>
+                    <a href="#" title="Twitter">T</a>
+                    <a href="#" title="Instagram">I</a>
+                    <a href="#" title="LinkedIn">L</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 NIRD - Lycée Ada Lovelace. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('mainNav');
+            const burger = document.getElementById('burger');
+            // On sélectionne aussi le conteneur des contrôles audio
+            const ui = document.querySelector('.ui-container');
+
+            nav.classList.toggle('active');
+            burger.classList.toggle('open');
+            
+            // Si la barre de contrôle existe sur cette page, on la cache/affiche
+            if (ui) {
+                ui.classList.toggle('hidden');
+            }
+        }
+    </script>
+
+    <script src="script.js"></script>
+    <!-- ChatBox -->
+    <div id="chat-icon">
+        <img src="./chatbot/chatbotreact.png" alt="Chat">
+    </div>
+    <div id="chat-box">
+        <div class="chat-header">
+            <span class="header-title">Moustache</span>
+            <img id="chat-corner-icon" src="./chatbot/pate.png" alt="icone">
+        </div>
+        <div class="chat-body"></div>
+        <form id="chat-form">
+            <div class="chat-footer">
+                <input type="text" id="user-message" name="message" placeholder="Écrire..." required>
+                <button type="submit">Envoyer</button>
+            </div>
+        </form>
+    </div>
+    <script src="./chatbot/chat.js"></script>
+</body>
+</html>
