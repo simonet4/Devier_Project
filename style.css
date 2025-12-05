@@ -262,7 +262,6 @@ nav a.active-link {
 .text-content {
     max-width: 1500px;
     text-align: justify;
-    background-color: rgba(234, 222, 218, 0.95);
     /* Fond crème semi-transparent */
     padding: 30px;
     border-radius: 15px;
@@ -278,6 +277,29 @@ nav a.active-link {
     /* Réduit un peu la marge (était 30px) */
     font-weight: 500;
     /* Rend le texte un peu plus gras pour qu'il ressorte mieux */
+}
+
+#next-page-btn {
+    display: none; /* caché par défaut */
+    background-color: #EADEDA; /* fond clair pour qu'on le voie */
+    color: #22223B; /* texte visible */
+    border: 3px solid #22223B;
+    padding: 18px 40px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 35px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#next-page-btn:hover {
+    background: linear-gradient(135deg, #B58AFF, #8AFF5B);
+    color: white;
+    border-color: transparent;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(181, 138, 255, 0.4);
 }
 
 .button-group {
@@ -623,17 +645,17 @@ footer {
 
 /* --- BOITE DE DIALOGUE STYLE POKÉMON --- */
 #dialogue-box {
-    width: 600px;                /* largeur fixe */
-    max-width: 600px;
+    width: 1200px;                /* largeur fixe */
+    max-width: 1200px;
     background: rgba(255, 255, 255, 0.95);
     border: 4px solid #22223B;
     border-radius: 20px;
     padding: 20px 30px;
-    font-size: 18px;
+    font-size: 35px;
     color: #22223B;
     box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-    position: relative;          /* IMPORTANT → pour placer la flèche */
-    margin-bottom: 30px; /* ← ajoute cet espace sous la bulle */
+    position: relative;
+    margin-bottom: 30px;
 }
 
 #dialogue-text {
@@ -646,7 +668,7 @@ footer {
     position: absolute;
     bottom: 5px;               /* toujours en bas */
     right: 20px;                /* toujours à droite */
-    font-size: 22px;
+    font-size: 35px;
     opacity: 0.8;
     cursor: pointer;
     user-select: none;
