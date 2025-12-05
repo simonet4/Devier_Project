@@ -55,6 +55,7 @@ Nous avons adopté un style graphique agréable et moderne :
 **Objectif :** Ajouter un élément rétro gaming à l'une des pages
 
 Une des pages durant la narration est stylisée "pixel art" !
+La page s'appelle "retro.html"
 
 ---
 
