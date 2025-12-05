@@ -43,6 +43,9 @@ var mySnakeArea = {
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.interval = setInterval(updateSnakeArea, refreshRate);
         window.addEventListener('keydown', function (e) {
+            if (e.code.startsWith("Arrow")) {
+                e.preventDefault();
+            }
             mySnakeArea.key = e.code;
         });
         ctx = mySnakeArea.context;
@@ -97,15 +100,16 @@ function snakeHead(color, x, y) {
 
 function updateSnakeArea() {
     mySnakeArea.clear();
-    if (mySnakeArea.key == "KeyD") {
-        faceRight()
-    } else if (mySnakeArea.key == "KeyA") {
-        faceLeft()
-    } else if (mySnakeArea.key == "KeyW") {
-        faceUp()
-    } else if (mySnakeArea.key == "KeyS") {
-        faceDown()
+    if (mySnakeArea.key == "KeyD" || mySnakeArea.key == "ArrowRight") {
+        faceRight();
+    } else if (mySnakeArea.key == "KeyA" || mySnakeArea.key == "ArrowLeft") {
+        faceLeft();
+    } else if (mySnakeArea.key == "KeyW" || mySnakeArea.key == "ArrowUp") {
+        faceUp();
+    } else if (mySnakeArea.key == "KeyS" || mySnakeArea.key == "ArrowDown") {
+        faceDown();
     }
+
     addTailPiece(mySnakeHead.x, mySnakeHead.y);
     mySnakeHead.newPos()
     checkCollision()
