@@ -208,7 +208,7 @@ nav a.active-link {
 }
 
 .zoom {
-    zoom: 0.60;
+    zoom: 0.70;
 }
 
 /* Style Glassmorphism pour les sections afin de voir le visualizer derrière */
@@ -1011,7 +1011,7 @@ footer {
     text-align: center;
 }
 
-.alternatives h2, 
+.alternatives h2,
 .alternatives p {
     color: var(--beige);
     filter: drop-shadow(2px 2px 0 #22223B) drop-shadow(-2px -2px 0 #22223B) drop-shadow(2px -2px 0 #22223B) drop-shadow(-2px 2px 0 #22223B) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
@@ -1032,7 +1032,7 @@ footer {
 
 .alternative-category {
     background-color: white;
-    color:var(--blue);
+    color: var(--blue);
     border: 2px solid rgba(34, 34, 59, 0.1);
     border-radius: 12px;
     padding: 24px;
