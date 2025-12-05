@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Début de l'histoire NIRD</title>
+    <link href="style.css" rel="stylesheet" />
+</head>
+
+<body class="unselectable">
+
+    <canvas id="interactive-bg"></canvas>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">N</div>
+                <h1>NIRD</h1>
+            </div>
+
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <span id="burger"></span>
+            </button>
+
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="#" class="active-link">L'Histoire</a></li>
+                    <li><a href="#">Page 2</a></li>
+                    <li><a href="#">Page 3</a></li>
+                    <li><a href="#">Page 4</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('mainNav');
+            const burger = document.getElementById('burger');
+
+            nav.classList.toggle('active');
+            burger.classList.toggle('open');
+        }
+    </script>
+
+    <div class="container zoom">
+        <div class="content-section">
+
+            <div class="content-layout">
+                <div class="image-placeholder">
+                </div>
+                <div id="dialogue-box">
+                    <div id="dialogue-text"></div>
+                    <div id="dialogue-next">▶</div>
+                </div>
+                <div class="button-group">
+                    <a href="page-suivante.html" id="next-page-btn" class="btn-outline"
+                        style="display: none;">Suivant</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Utilisation du même script.js -->
+    <script src="script.js"></script>
+
+</body>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>NIRD</h3>
+            <p>Lycée Ada Lovelace</p>
+            <p>Excellence et innovation depuis 2024</p>
+        </div>
+
+        <div class="footer-section">
+            <h3>Navigation</h3>
+            <a href="index.html">Accueil</a>
+            <a href="débutHistoire.html">L'Histoire</a>
+            <a href="#">Page 2</a>
+            <a href="#">Page 3</a>
+            <a href="#">Page 4</a>
+        </div>
+        <script>
+            function toggleMenu() {
+                const nav = document.getElementById('mainNav');
+                const burger = document.getElementById('burger');
+                nav.classList.toggle('active');
+                burger.classList.toggle('open');
+            }
+            const dialogues = [
+                "Alice et Robert arrivent en salle des profs, bien déterminés à faire bouger les choses.",
+                "<b>Prof de maths</b> : Linux ? Encore un truc compliqué, ça…",
+                "<b>Robert</b> : Mais non monsieur ! Et puis, ça ferait durer les ordinateurs beaucoup plus longtemps.",
+                "<b>Alice</b> : Et ça réduirait le besoin d’en racheter ! C’est bon pour l’environnement et pour le budget.",
+                "<b>Prof de maths</b> : Bon… prouvez-moi que vous êtes sérieux. Résolvez-moi ça."
+            ];
+
+            let index = 0;
+            let charIndex = 0;
+            let isTyping = false;
+
+            const textBox = document.getElementById("dialogue-text");
+            const nextBtn = document.getElementById("dialogue-next"); // flèche pour passer dialogues
+            const nextPageBtn = document.getElementById("next-page-btn"); // bouton page suivante
+
+            function typeDialogueHTML() {
+                isTyping = true;
+                const current = dialogues[index];
+                textBox.innerHTML = current.substring(0, charIndex);
+                charIndex++;
+
+                if (charIndex <= current.length) {
+                    setTimeout(typeDialogueHTML, 20);
+                } else {
+                    isTyping = false;
+
+                    // La flèche n'apparaît que si ce n'est pas le dernier dialogue
+                    if (index < dialogues.length - 1) {
+                        nextBtn.style.display = "block";
+                    } else {
+                        // Dernier dialogue : cacher la flèche et afficher le bouton "Suivant" pour la page suivante
+                        nextBtn.style.display = "none";
+                        nextPageBtn.style.display = "block";
+                    }
+                }
+            }
+
+            // Passe au dialogue suivant
+            function nextDialogue() {
+                if (isTyping) return;
+
+                if (index < dialogues.length - 1) {
+                    nextBtn.style.display = "none";
+                    index++;
+                    charIndex = 0;
+                    typeDialogueHTML();
+                }
+                // Si on est au dernier dialogue, ne rien faire
+            }
+
+            // Clic n'importe où pour passer au dialogue suivant
+            document.addEventListener("click", nextDialogue);
+
+            // Clic sur la flèche pour passer au dialogue suivant
+            nextBtn.addEventListener("click", nextDialogue);
+
+            // Lancement du premier dialogue
+            typeDialogueHTML();
+        </script>
+
+        <footer>
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>NIRD</h3>
+                    <p>Lycée Ada Lovelace</p>
+                    <p>Excellence et innovation depuis 2024</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Navigation</h3>
+                    <a href="#">Accueil</a>
+                    <a href="#">Page 1</a>
+                    <a href="#">Page 2</a>
+                    <a href="#">Page 3</a>
+                    <a href="#">Page 4</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <a href="mailto:contact@nird.fr">contact@nird.fr</a>
+                    <a href="tel:+33123456789">+33 1 23 45 67 89</a>
+                    <p>123 Rue de l'Innovation<br>31000 Toulouse</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Suivez-nous</h3>
+                    <div class="social-links">
+                        <a href="#" title="Facebook">F</a>
+                        <a href="#" title="Twitter">T</a>
+                        <a href="#" title="Instagram">I</a>
+                        <a href="#" title="LinkedIn">L</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 NIRD - Lycée Ada Lovelace. Tous droits réservés.</p>
+            </div>
+        </footer>
+        </body>
+
+</html>
