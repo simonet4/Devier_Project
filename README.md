@@ -69,8 +69,8 @@ Un grand merci à toute l'équipe ayant travaillé sur ce projet durant cette nu
 | **Unai MURILLO** | Développeur |
 | **Guillaume BOURNAZEL-LOTY** | Développeur |
 | **Lucas FERNANDES** | Développeur |
-| **Rémi SAGNES** | Développeur / Chef d'équipe|
-| **Anaïs DUVAL** | Développeur  |
+| **Rémi SAGNES** | Développeur |
+| **Anaïs DUVAL** | Développeur / Chef d'équipe|
 | **Elliot ISKEN--ANDERSEN NEXO** | Développeur |
 | **Eulalie FRAYSSE** | Développeur |
 
