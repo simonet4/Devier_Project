@@ -31,8 +31,7 @@ window.onload = () => {
     animate();
     initAudioEngine();
     
-    // Tentative de lecture automatique
-    // Note : Le volume est initialisé à 0.5 dans initAudioEngine
+    // Lecture lors du premier clic
     let p = audioEl.play();
     
     if (p !== undefined) {
@@ -87,12 +86,10 @@ function initAudioEngine() {
     
     gainNode = audioContext.createGain();
     
-    // --- CORRECTION ICI ---
-    // On met le volume à 50% par défaut pour que les billes bougent
+    // Volume par défaut à 50%
     gainNode.gain.value = 0.5; 
     volSlider.value = 0.5;
     updateMuteIcon(0.5);
-    // ----------------------
     
     connectToGraph(audioEl, true);
     
@@ -112,8 +109,7 @@ function connectToGraph(inputSource, enableOutput) {
         source = audioContext.createMediaStreamSource(inputSource);
     }
 
-    // Routage : Source -> Gain (Volume) -> Analyser -> Sortie
-    // Cela signifie que si le volume est à 0, le visualiseur s'arrête aussi (logique)
+    // Si le volume est à 0, le visualiseur s'arrête aussi
     source.connect(gainNode);
     gainNode.connect(analyser);
 
@@ -222,9 +218,7 @@ class Particle {
         // Facteur de volume : si 0 (mute), pas de réaction
         let volFactor = gainNode ? gainNode.gain.value : 0;
         
-        // Correction : Si on utilise l'audio PC, le gainNode contrôle le volume d'entrée vers l'analyseur.
-        // On s'assure qu'on a un facteur minimum pour le calcul si le son est fort
-        
+        // On s'assure qu'on a un facteur minimum pour le calcul si le son est fort        
         const dx = mouse.x - this.x; 
         const dy = mouse.y - this.y;
         const dist = Math.sqrt(dx*dx + dy*dy); 
@@ -267,7 +261,7 @@ class Particle {
             this.y += this.vy * moveScale;
         }
 
-        // Taille (Bass Kick)
+        // Taille
         let bassKick = (bassIntensity / 255);
         if(bassIntensity > 180) {
             this.currentSize = this.baseSize + (bassKick * 12); 
@@ -301,6 +295,7 @@ function initParticles() {
     width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight;
     particles = []; for(let i=0; i<config.count; i++) particles.push(new Particle());
 }
+
 function animate() {
     requestAnimationFrame(animate);
     
