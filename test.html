@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page d'accueil NIRD</title>
+    <title>Page 1 - NIRD</title>
     <style>
         * {
             margin: 0;
@@ -14,9 +14,15 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #22223B;
+            background-image: url("image.webp");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             color: #EADEDA;
             line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         header {
@@ -158,83 +164,201 @@
             transform: translateY(-2px);
         }
 
-        @media (max-width: 968px) {
-            nav a {
-                font-size: 16px;
-            }
-        }
-
         .container {
-            max-width: 1400px;
-            margin: 0 auto;
+            max-width: 1500px;
+            margin: 0;
             padding: 60px 40px;
+            flex: 1;
         }
 
-        .hero {
-            text-align: center;
-            padding: 80px 20px;
+        .content-section {
+            background: rgba(234, 222, 218, 0.95);
+            border-radius: 20px;
+            padding: 60px 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .hero h2 {
+        .content-section h2 {
             font-size: 48px;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #B58AFF, #8AFF5B);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: 20px;
+            text-align: center;
             margin-bottom: 40px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            color: #EADEDA;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 35px;
-            margin: 10px;
-            background: #B58AFF;
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: 2px solid #B58AFF;
-        }
-
-        .btn:hover {
-            background: transparent;
-            color: #B58AFF;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(181, 138, 255, 0.3);
-        }
-
-        .btn-periwinkle {
-            background: #8AFF5B;
             color: #22223B;
-            border-color: #8AFF5B;
         }
 
-        .btn-periwinkle:hover {
+        .content-layout {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            background: linear-gradient(135deg, #e0e0e0, #f5f5f5);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .image-placeholder::before {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: #c0c0c0;
+            border-radius: 50%;
+            top: 50px;
+            right: 80px;
+        }
+
+        .image-placeholder::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 120px solid #b0b0b0;
+            bottom: 40px;
+            left: 50px;
+        }
+
+        .text-content {
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .text-content p {
+            color: #22223B;
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .btn-outline {
+            display: block;
+            padding: 18px 40px;
             background: transparent;
-            color: #8AFF5B;
-            box-shadow: 0 8px 20px rgba(138, 255, 91, 0.3);
+            color: #22223B;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s;
+            border: 3px solid #22223B;
         }
 
-        .btn-neon {
-            background: transparent;
-            color: #EADEDA;
-            border-color: #EADEDA;
+        .btn-outline:hover {
+            background: linear-gradient(135deg, #B58AFF, #8AFF5B);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(181, 138, 255, 0.4);
         }
 
-        .btn-neon:hover {
+        footer {
             background: #EADEDA;
             color: #22223B;
-            box-shadow: 0 8px 20px rgba(234, 222, 218, 0.3);
+            padding: 60px 40px 30px;
+            margin-top: 80px;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #22223B;
+            font-weight: 700;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #22223B;
+            text-decoration: none;
+            line-height: 2;
+            display: block;
+            transition: all 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #B58AFF;
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 2px solid #22223B;
+            text-align: center;
+            color: #22223B;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #B58AFF, #8AFF5B);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 5px 15px rgba(181, 138, 255, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .content-section {
+                padding: 40px 20px;
+            }
+
+            .content-section h2 {
+                font-size: 36px;
+            }
+
+            .image-placeholder {
+                height: 250px;
+            }
+
+            .text-content p {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -243,8 +367,8 @@
     <header>
         <div class="header-container">
             <div class="logo">
-                <div class="logo-icon">S</div>
-                <h1>Studio Créatif</h1>
+                <div class="logo-icon">N</div>
+                <h1>NIRD</h1>
             </div>
 
             <button class="menu-toggle" onclick="toggleMenu()">
@@ -253,7 +377,7 @@
 
             <nav id="mainNav">
                 <ul>
-                    <li><a href="#">Accueil</a></li>
+                    <li><a href="Accueil.html">Accueil</a></li>
                     <li><a href="#">Page 1</a></li>
                     <li><a href="#">Page 2</a></li>
                     <li><a href="#">Page 3</a></li>
@@ -264,15 +388,64 @@
     </header>
 
     <div class="container">
-        <div class="hero">
-            <h2>Transformez vos idées en réalité</h2>
-            <p>Nous créons des expériences numériques exceptionnelles qui captivent et inspirent votre audience. Notre
-                expertise combinée au design et à la technologie donne vie à vos projets les plus ambitieux.</p>
-            <a href="#contact" class="btn">Démarrer un projet</a>
-            <a href="#portfolio" class="btn btn-periwinkle">Voir nos réalisations</a>
-            <a href="#services" class="btn btn-neon">Nos services</a>
+        <div class="content-section">
+            <h2>Heading</h2>
+
+            <div class="content-layout">
+                <div class="image-placeholder"></div>
+
+                <div class="text-content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra
+                        nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id.</p>
+
+                    <div class="button-group">
+                        <a href="#" class="btn-outline">Lorem ipsum dolor sit amet, consectetur adipiscing</a>
+                        <a href="#" class="btn-outline">Lorem ipsum dolor sit amet, consectetur adipiscing</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>NIRD</h3>
+                <p>Lycée Ada Lovelace</p>
+                <p>Excellence et innovation depuis 2024</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Navigation</h3>
+                <a href="Accueil.html">Accueil</a>
+                <a href="#">Page 1</a>
+                <a href="#">Page 2</a>
+                <a href="#">Page 3</a>
+                <a href="#">Page 4</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <a href="mailto:contact@nird.fr">contact@nird.fr</a>
+                <a href="tel:+33123456789">+33 1 23 45 67 89</a>
+                <p>123 Rue de l'Innovation<br>31000 Toulouse</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Suivez-nous</h3>
+                <div class="social-links">
+                    <a href="#" title="Facebook">F</a>
+                    <a href="#" title="Twitter">T</a>
+                    <a href="#" title="Instagram">I</a>
+                    <a href="#" title="LinkedIn">L</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 NIRD - Lycée Ada Lovelace. Tous droits réservés.</p>
+        </div>
+    </footer>
 
     <script>
         function toggleMenu() {
