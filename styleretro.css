@@ -194,7 +194,6 @@ nav a.active-link {
     padding: 60px 40px;
     flex: 1;
     width: 100%;
-
     zoom: 0.60;
 
 }
@@ -277,6 +276,7 @@ nav a.active-link {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+
     /* espace entre bulle et bouton */
 }
 
@@ -609,13 +609,13 @@ footer {
 
 /* --- BOITE DE DIALOGUE STYLE POKÉMON --- */
 #dialogue-box {
-    width: 600px;
+    width: 1500px;
     /* largeur fixe */
-    max-width: 600px;
+    max-width: 1500px;
     background: rgba(255, 255, 255, 0.95);
     border: 4px solid #22223B;
     padding: 20px 30px;
-    font-size: 18px;
+    font-size: 35px;
     color: #22223B;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
     position: relative;
