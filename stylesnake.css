@@ -1,0 +1,253 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #22223B;
+    color: #EADEDA;
+    flex-direction: column;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+.title {
+    font-size: 48px;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #B58AFF, #8AFF5B);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    /* Ombre modifiée pour lisibilité sur fond sombre */
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 1));
+}
+
+
+.bold {
+    font-size: 20px;
+    font-weight: 1000;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #EADEDA;
+    filter: drop-shadow(2px 2px 0 #22223B) drop-shadow(-2px -2px 0 #22223B) drop-shadow(2px -2px 0 #22223B) drop-shadow(-2px 2px 0 #22223B) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.desc {
+    font-size: 20px;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #EADEDA;
+    filter: drop-shadow(2px 2px 0 #22223B) drop-shadow(-2px -2px 0 #22223B) drop-shadow(2px -2px 0 #22223B) drop-shadow(-2px 2px 0 #22223B) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 35px;
+    margin: 10px;
+    background: #B58AFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: 2px solid #B58AFF;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: transparent;
+    color: #B58AFF;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(181, 138, 255, 0.3);
+}
+
+.btn-periwinkle {
+    background: #8AFF5B;
+    color: #22223B;
+    border-color: #8AFF5B;
+}
+
+.btn-periwinkle:hover {
+    background: transparent;
+    color: #8AFF5B;
+    box-shadow: 0 8px 20px rgba(138, 255, 91, 0.3);
+}
+
+/* --- FOOTER --- */
+footer {
+    background: rgba(234, 222, 218, 0.95);
+    color: #22223B;
+    padding: 60px 40px 30px;
+    margin-top: auto;
+    /* Pousse le footer en bas */
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.footer-section h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #22223B;
+    font-weight: 700;
+}
+
+.footer-section p,
+.footer-section a {
+    color: #22223B;
+    text-decoration: none;
+    line-height: 2;
+    display: block;
+    transition: all 0.3s;
+}
+
+.footer-section a:hover {
+    color: #B58AFF;
+    transform: translateX(5px);
+}
+
+.footer-bottom {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-top: 30px;
+    border-top: 2px solid #22223B;
+    text-align: center;
+    color: #22223B;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #B58AFF, #8AFF5B);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 5px 15px rgba(181, 138, 255, 0.5);
+}
+
+/* --- UTILITAIRES --- */
+/* Empêche la sélection de texte (utile pour le visualiseur) */
+.unselectable {
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE/Edge */
+    user-select: none;
+    /* Standard */
+    cursor: default;
+    /* Curseur par défaut au lieu du curseur de texte */
+}
+
+.credit-boxnom {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin-top: 90px;
+    text-decoration: none;
+}
+
+/* Chaque item */
+.credit-boxnom > * {
+    display: flex;             /* active flex dans l’item */
+    align-items: center;       /* centre verticalement */
+    justify-content: center;   /* centre horizontalement */
+    text-align: center;        /* centre le texte sur plusieurs lignes */
+    padding: 10px;             /* optionnel */
+}
+
+.credit-boxnom p {
+    background: linear-gradient(135deg, #8c67cc 0%, #61b340 100%);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: bold;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.credit-boxnom p:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.merci {
+    padding-bottom: 50px;
+    margin-top: -90px;
+    text-align: center;
+    font-size: 68px;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #B58AFF, #8AFF5B);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(2px 2px 0 #22223B) drop-shadow(-2px -2px 0 #22223B) drop-shadow(2px -2px 0 #22223B) drop-shadow(-2px 2px 0 #22223B) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+.credith2 {
+    margin-top: -50px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 1));
+}
+
+/* --- BOITE DE DIALOGUE STYLE POKÉMON --- */
+#dialogue-box {
+    width: 1200px;
+    /* largeur fixe */
+    max-width: 1200px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 4px solid #22223B;
+    border-radius: 20px;
+    padding: 20px 30px;
+    font-size: 35px;
+    color: #22223B;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    margin-bottom: 30px;
+}
+
+#dialogue-text {
+    white-space: normal;
+    word-wrap: break-word;
+    line-height: 1.5;
+}
+
+#dialogue-next {
+    position: absolute;
+    bottom: 5px;
+    /* toujours en bas */
+    right: 20px;
+    /* toujours à droite */
+    font-size: 35px;
+    opacity: 0.8;
+    cursor: pointer;
+    user-select: none;
+    transition: opacity 0.2s;
+}
+
+#dialogue-next:hover {
+    opacity: 1;
+}
