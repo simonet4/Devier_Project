@@ -26,6 +26,12 @@ let lastVolume = 0;
 let isCapturing = false;
 let streamSource = null;
 
+// Variables pour le changement de musique
+let muteClickCount = 0;
+let muteClickTimer = null;
+let currentTrack = 0; // 0 = BackgroundBossa, 1 = LocalForecast
+const tracks = ['BackgroundBossa.mp3', 'LocalForecast.mp3'];
+
 /* =========================================
    1. INITIALISATION
    ========================================= */
@@ -167,6 +173,29 @@ if (hasAudioControls) {
 
     muteBtn.addEventListener('click', () => {
         if(!gainNode) return;
+        
+        // Gestion du compteur de clics
+        muteClickCount++;
+        
+        // Réinitialiser le timer
+        if (muteClickTimer) {
+            clearTimeout(muteClickTimer);
+        }
+        
+        // Timer de 2 secondes pour réinitialiser le compteur
+        muteClickTimer = setTimeout(() => {
+            muteClickCount = 0;
+        }, 2000);
+        
+        // Si 5 clics, changer de musique
+        if (muteClickCount === 5) {
+            switchTrack();
+            muteClickCount = 0;
+            clearTimeout(muteClickTimer);
+            return; // Ne pas exécuter le toggle mute
+        }
+        
+        // Comportement normal du mute
         if(gainNode.gain.value > 0) { 
             lastVolume = gainNode.gain.value; 
             gainNode.gain.value = 0; 
@@ -178,6 +207,31 @@ if (hasAudioControls) {
         }
         updateMuteIcon(gainNode.gain.value);
     });
+}
+
+function switchTrack() {
+    if (!hasAudioControls) return;
+    
+    // Sauvegarder le temps actuel et le volume
+    const currentTime = audioEl.currentTime;
+    const wasPlaying = !audioEl.paused;
+    const currentVolume = gainNode.gain.value;
+    
+    // Changer de piste
+    currentTrack = (currentTrack + 1) % tracks.length;
+    
+    // Notification visuelle
+    console.log(`🎵 Changement de musique vers: ${tracks[currentTrack]}`);
+    
+    // Changer la source
+    audioEl.src = tracks[currentTrack];
+    
+    // Reprendre la lecture si elle était en cours
+    if (wasPlaying) {
+        audioEl.play().then(() => {
+            gainNode.gain.value = currentVolume;
+        }).catch(e => console.error("Erreur de lecture:", e));
+    }
 }
 
 function stopCapture() {
