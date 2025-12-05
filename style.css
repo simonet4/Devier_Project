@@ -603,14 +603,13 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 /* Sélection visuelle */
-.q-option input[type="radio"]:checked+span {
+/* Met en évidence l’option sélectionnée */
+.q-option input[type="radio"]:checked ~ label,
+.q-option input[type="radio"]:checked {
     font-weight: 900;
     color: #410554;
-    text-decoration: underline;
-    color: #22223B;
-    border-color: #410554;
-
 }
+
 
 /* ----- BONNE RÉPONSE ----- */
 .qcm-correct {
