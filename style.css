@@ -220,15 +220,15 @@ nav a.active-link {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 0px;
 }
 
 * .image-placeholder {
-    width: 27%;
-    max-width: 900px;
+    width: 100%;
+    max-width: 1200px;
 
     /* --- VERIFIE BIEN QUE CETTE LIGNE EST PRESENTE --- */
-    background-image: url("lyceenne.webp");
+    background-image: url("deux_lyceens.webp");
     /* ------------------------------------------------- */
 
     /* Les paramètres pour bien afficher l'image */
@@ -252,7 +252,7 @@ nav a.active-link {
 
 
 .text-content {
-    max-width: 800px;
+    max-width: 1200px;
     text-align: justify;
     background-color: rgba(234, 222, 218, 0.95);
     /* Fond crème semi-transparent */
@@ -391,12 +391,15 @@ nav a.active-link {
     z-index: 1000;
     transition: all 0.3s ease;
 }
+
 /* Cache les contrôles quand le menu est ouvert */
 .ui-container.hidden {
     opacity: 0;
-    pointer-events: none; /* Empêche de cliquer dessus quand c'est invisible */
+    pointer-events: none;
+    /* Empêche de cliquer dessus quand c'est invisible */
     visibility: hidden;
 }
+
 /* SUR ORDINATEUR (Grand écran) : Centré dans le header */
 @media (min-width: 969px) {
     .header-container {
@@ -606,4 +609,3 @@ footer {
     background-clip: text;
     filter: drop-shadow(2px 2px 0 #22223B) drop-shadow(-2px -2px 0 #22223B) drop-shadow(2px -2px 0 #22223B) drop-shadow(-2px 2px 0 #22223B) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
 }
-
