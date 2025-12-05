@@ -806,6 +806,7 @@ footer {
     grid-template-columns: repeat(5, 1fr);
     gap: 15px;
     margin-top: 90px;
+    text-decoration: none;
 }
 
 /* Chaque item */
