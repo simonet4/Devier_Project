@@ -61,6 +61,10 @@ header {
     gap: 20px;
 }
 
+.header-container a {
+    text-decoration: none;
+}
+
 
 .logo {
     display: flex;
