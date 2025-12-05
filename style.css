@@ -740,11 +740,19 @@ footer {
 }
 
 .credit-boxnom {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     gap: 15px;
     margin-top: 90px;
+}
+
+/* Chaque item */
+.credit-boxnom > * {
+    display: flex;             /* active flex dans l’item */
+    align-items: center;       /* centre verticalement */
+    justify-content: center;   /* centre horizontalement */
+    text-align: center;        /* centre le texte sur plusieurs lignes */
+    padding: 10px;             /* optionnel */
 }
 
 .credit-boxnom p {
