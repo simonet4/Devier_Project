@@ -10,6 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const resultBox = document.getElementById("qcm-result");
     const finishBtn = document.getElementById("finish-btn");
 
+    // Désactiver le bouton final au début
+    finishBtn.disabled = true;
+
     submitBtn.addEventListener("click", () => {
 
         let score = 0;
@@ -19,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
             opt.classList.remove("qcm-correct", "qcm-wrong");
         });
 
-        // Vérification des réponses données
+        // Vérification des réponses
         for (let q in bonnesReponses) {
 
             let selected = document.querySelector(`input[name="${q}"]:checked`);
@@ -35,12 +38,11 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        // Affichage du score
+        // Affichage score
         resultBox.style.display = "block";
-        resultBox.className = "";   // reset classes
+        resultBox.className = "";
         resultBox.innerHTML = `Score : <strong>${score}/2</strong>`;
 
-        // Activation / désactivation du bouton final
         if (score === 2) {
             resultBox.classList.add("good");
             resultBox.innerHTML += "<br>Excellent ! Moustache est fier ! 😺";
@@ -56,4 +58,10 @@ document.addEventListener("DOMContentLoaded", () => {
             finishBtn.classList.remove("enabled");
         }
     });
+
+    // Redirection si score parfait
+    finishBtn.addEventListener("click", () => {
+        window.location.href = "Quatrieme_Page.html";
+    });
+
 });
