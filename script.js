@@ -16,6 +16,9 @@ const volSlider = document.getElementById('volume-slider');
 const captureBtn = document.getElementById('capture-btn');
 const audioEl = document.getElementById('audio-player');
 
+// Détection si on est sur une page avec audio
+const hasAudioControls = !!(audioEl && muteBtn && volSlider && captureBtn);
+
 let width, height, particles = [], mouse = { x: -1000, y: -1000 }, isMouseDown = false;
 let audioContext, analyser, source, gainNode, dataArray;
 let audioIntensity = 0, bassIntensity = 0, isAudioInit = false;
@@ -29,33 +32,35 @@ let streamSource = null;
 window.onload = () => {
     initParticles(); 
     animate();
-    initAudioEngine();
     
-    // Lecture lors du premier clic
-    let p = audioEl.play();
-    
-    if (p !== undefined) {
-        p.then(() => {
-            // Lecture réussie (rare sur les navigateurs modernes sans interaction)
-            console.log("Audio démarré automatiquement");
-        }).catch(() => {
-            // Lecture bloquée par le navigateur -> On attend un clic utilisateur
-            console.log("Autoplay bloqué : En attente d'interaction utilisateur...");
-            ['click', 'mousemove', 'keydown'].forEach(evt => 
-                document.body.addEventListener(evt, unlockAudio, { once: true })
-            );
-        });
+    // Initialisation audio seulement si les éléments existent
+    if (hasAudioControls) {
+        initAudioEngine();
+        
+        // Lecture lors du premier clic
+        let p = audioEl.play();
+        
+        if (p !== undefined) {
+            p.then(() => {
+                console.log("Audio démarré automatiquement");
+            }).catch(() => {
+                console.log("Autoplay bloqué : En attente d'interaction utilisateur...");
+                ['click', 'mousemove', 'keydown'].forEach(evt => 
+                    document.body.addEventListener(evt, unlockAudio, { once: true })
+                );
+            });
+        }
     }
 };
 
 function unlockAudio() {
-    // Cette fonction se lance au premier clic si l'autoplay a échoué
+    if (!hasAudioControls) return;
+    
     if (!audioContext) initAudioEngine();
     if (audioContext && audioContext.state === 'suspended') audioContext.resume();
     
     if (audioEl.paused && !isCapturing) {
         audioEl.play().then(() => {
-             // On s'assure que le volume est bien actif
              if(gainNode) {
                  gainNode.gain.value = lastVolume;
                  volSlider.value = lastVolume;
@@ -69,13 +74,13 @@ function unlockAudio() {
    2. MOTEUR AUDIO (ROUTAGE)
    ========================================= */
 function initAudioEngine() {
-    if(isAudioInit) return;
+    if(!hasAudioControls || isAudioInit) return;
+    
     const AC = window.AudioContext || window.webkitAudioContext;
     audioContext = new AC();
     
     audioContext.onstatechange = () => {
         if (audioContext.state === 'suspended') {
-            // Tentative de reprise si suspendu
             audioContext.resume();
         }
     };
@@ -86,7 +91,6 @@ function initAudioEngine() {
     
     gainNode = audioContext.createGain();
     
-    // Volume par défaut à 50%
     gainNode.gain.value = 0.5; 
     volSlider.value = 0.5;
     updateMuteIcon(0.5);
@@ -98,6 +102,7 @@ function initAudioEngine() {
 }
 
 function connectToGraph(inputSource, enableOutput) {
+    if (!hasAudioControls) return;
     if (source) { source.disconnect(); }
 
     if (inputSource instanceof HTMLMediaElement) {
@@ -109,11 +114,9 @@ function connectToGraph(inputSource, enableOutput) {
         source = audioContext.createMediaStreamSource(inputSource);
     }
 
-    // Si le volume est à 0, le visualiseur s'arrête aussi
     source.connect(gainNode);
     gainNode.connect(analyser);
 
-    // Sortie Enceintes (seulement si enableOutput est vrai)
     try { analyser.disconnect(audioContext.destination); } catch(e) {}
     
     if (enableOutput) {
@@ -124,78 +127,73 @@ function connectToGraph(inputSource, enableOutput) {
 /* =========================================
    3. BOUTONS (PC & VOLUME)
    ========================================= */
-captureBtn.addEventListener('click', async () => {
-    if (!isAudioInit) initAudioEngine();
-    if (audioContext.state === 'suspended') audioContext.resume();
+if (hasAudioControls) {
+    captureBtn.addEventListener('click', async () => {
+        if (!isAudioInit) initAudioEngine();
+        if (audioContext.state === 'suspended') audioContext.resume();
 
-    if (isCapturing) { stopCapture(); return; }
+        if (isCapturing) { stopCapture(); return; }
 
-    audioEl.pause(); 
+        audioEl.pause(); 
 
-    try {
-        const stream = await navigator.mediaDevices.getDisplayMedia({ audio: true, video: true });
-        // Vérification si l'utilisateur a partagé l'audio
-        if (stream.getAudioTracks().length === 0) { 
-            alert("⚠️ Audio non partagé ! Veuillez cocher 'Partager l'audio système' dans la fenêtre."); 
-            stream.getTracks().forEach(t => t.stop());
-            audioEl.play(); return; 
+        try {
+            const stream = await navigator.mediaDevices.getDisplayMedia({ audio: true, video: true });
+            if (stream.getAudioTracks().length === 0) { 
+                alert("⚠️ Audio non partagé ! Veuillez cocher 'Partager l'audio système' dans la fenêtre."); 
+                stream.getTracks().forEach(t => t.stop());
+                audioEl.play(); return; 
+            }
+            streamSource = stream;
+            
+            connectToGraph(stream, false); 
+
+            isCapturing = true;
+            captureBtn.textContent = "ARRÊTER"; 
+            captureBtn.classList.add('capture-active');
+
+            stream.getVideoTracks()[0].onended = () => stopCapture();
+            stream.getAudioTracks()[0].onended = () => stopCapture();
+
+        } catch(e) { console.error(e); audioEl.play(); }
+    });
+
+    volSlider.addEventListener('input', (e) => {
+        if(!gainNode) return;
+        const val = parseFloat(e.target.value);
+        gainNode.gain.value = val;
+        if(val > 0) lastVolume = val;
+        updateMuteIcon(val);
+    });
+
+    muteBtn.addEventListener('click', () => {
+        if(!gainNode) return;
+        if(gainNode.gain.value > 0) { 
+            lastVolume = gainNode.gain.value; 
+            gainNode.gain.value = 0; 
+            volSlider.value = 0; 
+        } else { 
+            const target = lastVolume > 0.05 ? lastVolume : 0.5;
+            gainNode.gain.value = target; 
+            volSlider.value = target; 
         }
-        streamSource = stream;
-        
-        // Mode PC : On connecte le stream, mais on ne l'envoie pas vers la sortie (false)
-        // pour éviter l'écho (feedback loop)
-        connectToGraph(stream, false); 
-
-        isCapturing = true;
-        captureBtn.textContent = "ARRÊTER"; 
-        captureBtn.classList.add('capture-active');
-
-        // Gestion de l'arrêt du partage par l'interface du navigateur
-        stream.getVideoTracks()[0].onended = () => stopCapture();
-        stream.getAudioTracks()[0].onended = () => stopCapture();
-
-    } catch(e) { console.error(e); audioEl.play(); }
-});
+        updateMuteIcon(gainNode.gain.value);
+    });
+}
 
 function stopCapture() {
-    if (!isCapturing) return;
+    if (!hasAudioControls || !isCapturing) return;
     if (streamSource) { streamSource.getTracks().forEach(track => track.stop()); streamSource = null; }
     isCapturing = false;
     captureBtn.textContent = "📡 Mode Audio PC"; 
     captureBtn.classList.remove('capture-active');
     
-    // Retour à la musique MP3
     connectToGraph(audioEl, true);
-    // On remet le volume comme il était
     gainNode.gain.value = lastVolume;
     audioEl.play(); 
 }
 
-volSlider.addEventListener('input', (e) => {
-    if(!gainNode) return;
-    const val = parseFloat(e.target.value);
-    gainNode.gain.value = val;
-    if(val > 0) lastVolume = val;
-    updateMuteIcon(val);
-});
-
-muteBtn.addEventListener('click', () => {
-    if(!gainNode) return;
-    if(gainNode.gain.value > 0) { 
-        // Mute
-        lastVolume = gainNode.gain.value; 
-        gainNode.gain.value = 0; 
-        volSlider.value = 0; 
-    } else { 
-        // Unmute
-        const target = lastVolume > 0.05 ? lastVolume : 0.5;
-        gainNode.gain.value = target; 
-        volSlider.value = target; 
-    }
-    updateMuteIcon(gainNode.gain.value);
-});
-
 function updateMuteIcon(val) { 
+    if (!hasAudioControls) return;
     muteBtn.textContent = val == 0 ? "🔇" : (val < 0.5 ? "🔉" : "🔊"); 
 }
 
@@ -215,19 +213,20 @@ class Particle {
     }
     
     update() {
-        // Facteur de volume : si 0 (mute), pas de réaction
-        let volFactor = gainNode ? gainNode.gain.value : 0;
+        // Facteur de volume : si pas d'audio, on utilise une valeur par défaut
+        let volFactor = hasAudioControls && gainNode ? gainNode.gain.value : 0.5;
         
-        // On s'assure qu'on a un facteur minimum pour le calcul si le son est fort        
         const dx = mouse.x - this.x; 
         const dy = mouse.y - this.y;
         const dist = Math.sqrt(dx*dx + dy*dy); 
         const angle = Math.atan2(dy, dx);
 
-        // Jitter basé sur l'intensité audio et le volume actuel
-        let jitterAmount = (audioIntensity / 255) * 4 * (volFactor > 0.1 ? volFactor : 0.5); 
+        // Jitter basé sur l'intensité audio (ou valeur par défaut si pas d'audio)
+        let jitterAmount = hasAudioControls ? 
+            (audioIntensity / 255) * 4 * (volFactor > 0.1 ? volFactor : 0.5) : 
+            0.3;
         
-        if (jitterAmount > 0.01) {
+        if (jitterAmount > 0.01 && Math.random() > 0.95) {
             this.vx += (Math.random() - 0.5) * jitterAmount;
             this.vy += (Math.random() - 0.5) * jitterAmount;
         }
@@ -255,16 +254,19 @@ class Particle {
             this.x += this.vx;
             this.y += this.vy;
         } else {
-            // Mouvement constant léger même sans musique
-            let moveScale = volFactor > 0 ? (volFactor + 0.2) : 0.1;
+            let moveScale = hasAudioControls && volFactor > 0 ? (volFactor + 0.2) : 0.2;
             this.x += this.vx * moveScale;
             this.y += this.vy * moveScale;
         }
 
         // Taille
-        let bassKick = (bassIntensity / 255);
-        if(bassIntensity > 180) {
-            this.currentSize = this.baseSize + (bassKick * 12); 
+        if (hasAudioControls) {
+            let bassKick = (bassIntensity / 255);
+            if(bassIntensity > 180) {
+                this.currentSize = this.baseSize + (bassKick * 12); 
+            } else {
+                this.currentSize += (this.baseSize - this.currentSize) * 0.1;
+            }
         } else {
             this.currentSize += (this.baseSize - this.currentSize) * 0.1;
         }
@@ -276,11 +278,13 @@ class Particle {
 
     draw() {
         ctx.beginPath();
-        if(bassIntensity > 200 && Math.random() > 0.5) ctx.fillStyle = colors.flash;
-        else ctx.fillStyle = this.color;
+        if(hasAudioControls && bassIntensity > 200 && Math.random() > 0.5) {
+            ctx.fillStyle = colors.flash;
+        } else {
+            ctx.fillStyle = this.color;
+        }
         
-        // Scale visuel basé sur l'intensité brute (indépendant du volume gainNode pour le dessin)
-        let volumeScale = 1 + (audioIntensity / 255) * 0.8;
+        let volumeScale = hasAudioControls ? 1 + (audioIntensity / 255) * 0.8 : 1;
         let finalSize = this.currentSize * volumeScale;
         
         ctx.arc(this.x, this.y, finalSize, 0, Math.PI*2);
@@ -299,8 +303,8 @@ function initParticles() {
 function animate() {
     requestAnimationFrame(animate);
     
-    // Analyse des fréquences
-    if(isAudioInit && analyser) {
+    // Analyse des fréquences seulement si audio disponible
+    if(hasAudioControls && isAudioInit && analyser) {
         analyser.getByteFrequencyData(dataArray);
         let sum = 0, bassSum = 0;
         for(let i=0; i<dataArray.length; i++) { 

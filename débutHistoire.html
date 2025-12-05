@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Début de l'histoire NIRD</title>
     <link href="style.css" rel="stylesheet" />
-
 </head>
 
-<body>
+<body class="unselectable">
+
+    <canvas id="interactive-bg"></canvas>
+
     <header>
         <div class="header-container">
             <div class="logo">
@@ -23,8 +25,8 @@
 
             <nav id="mainNav">
                 <ul>
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">Page 1</a></li>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="#" class="active-link">L'Histoire</a></li>
                     <li><a href="#">Page 2</a></li>
                     <li><a href="#">Page 3</a></li>
                     <li><a href="#">Page 4</a></li>
@@ -33,6 +35,16 @@
         </div>
     </header>
 
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('mainNav');
+            const burger = document.getElementById('burger');
+
+            nav.classList.toggle('active');
+            burger.classList.toggle('open');
+        }
+    </script>
+
     <div class="container">
         <div class="content-section">
             <h2>Voici Alice et Robert</h2>
@@ -40,19 +52,39 @@
             <div class="content-layout">
                 <div class="image-placeholder">
                 </div>
-                <div class="text-content">
                     <div id="dialogue-box">
                         <div id="dialogue-text"></div>
                         <div id="dialogue-next">▶</div>
                     </div>
-                </div>
                     <div class="button-group">
                         <a href="page-suivante.html" id="next-page-btn" class="btn-outline" style="display: none;">Suivant</a>
-                    </div>
+                    </div> 
             </div>
         </div>
     </div>
+    </div>
 
+    <!-- Utilisation du même script.js -->
+    <script src="script.js"></script>
+
+</body>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>NIRD</h3>
+            <p>Lycée Ada Lovelace</p>
+            <p>Excellence et innovation depuis 2024</p>
+        </div>
+
+        <div class="footer-section">
+            <h3>Navigation</h3>
+            <a href="index.html">Accueil</a>
+            <a href="débutHistoire.html">L'Histoire</a>
+            <a href="#">Page 2</a>
+            <a href="#">Page 3</a>
+            <a href="#">Page 4</a>
+        </div>
     <script>
         function toggleMenu() {
             const nav = document.getElementById('mainNav');
@@ -159,8 +191,9 @@
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2024 NIRD - Lycée Ada Lovelace. Tous droits réservés.</p>
+            <p>&copy; 2025 NIRD - Lycée Ada Lovelace. Tous droits réservés.</p>
         </div>
     </footer>
 </body>
+
 </html>
