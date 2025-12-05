@@ -16,7 +16,7 @@
 ## 🏆 Défis Relevés (Challenges)
 
 ### 1. 🐍 Défi CAPCOD : "Hidden Snake"
-[cite_start]**Objectif :** Cacher un jeu de snake au sein du site[cite: 32].
+**Objectif :** Cacher un jeu de snake au sein du site.
 
 Nous avons intégré un Snake satirique qui dénonce la collecte de données, caché dans l'application.
 
@@ -37,7 +37,7 @@ Rencontrez **Moustache**, notre assistant virtuel félin.
 * Il personnifie l'ironie face aux promesses parfois vides de l'IA générative.
 
 ### 3. 🎨 Défi CAPGEMINI : "Visualisation Audio"
-[cite_start]**Objectif :** Un visuel enivrant, original ou drôle réagissant au son[cite: 32].
+**Objectif :** Un visuel enivrant, original ou drôle réagissant au son.
 
 Notre page d'accueil est un visualiseur audio interactif développé en pur JavaScript (Canvas API + Web Audio API) :
 * Des particules réagissent aux basses fréquences de la musique.
@@ -46,7 +46,7 @@ Notre page d'accueil est un visualiseur audio interactif développé en pur Java
 (si vous l'osez, rendrez muet plusieurs foirs la musique de l'accueil, une surprise vous attendra (pas de rickroll car ce n'est pas libre de droit))
 
 ### 4. 🖱️ Défi CAPCOD : "Hair'gonomie"
-[cite_start]**Objectif :** Repenser l'ergonomie sans conventions[cite: 32].
+**Objectif :** Repenser l'ergonomie sans conventions.
 
 Nous avons alterné entre deux styles ergonomiques opposés pour marquer la rupture technologique :
 * **Glassmorphism Moderne :** Fluide et transparent pour le futur (NIRD).
