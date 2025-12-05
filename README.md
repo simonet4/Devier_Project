@@ -29,7 +29,7 @@ Nous avons intégré un Snake satirique qui dénonce la collecte de données, ca
 * **Activation :** *(Cliquez sur le logo NIRD 5 fois / Ou appuyez sur la touche 'S' / Ou via l'url `snake.html`)*.
 
 ### 2. 🤖 Défi VIVERIS : "Chat'bruti"
-[cite_start]**Objectif :** Créer un chatbot "complètement à côté de la plaque"[cite: 32].
+**Objectif :** Créer un chatbot "complètement à côté de la plaque".
 
 Rencontrez **Moustache**, notre assistant virtuel félin.
 * Il ne répond jamais vraiment aux questions techniques.
