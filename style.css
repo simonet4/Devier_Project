@@ -356,7 +356,7 @@ nav a.active-link {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     /* Ombre modifiée pour lisibilité sur fond sombre */
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 1));
 }
 
 .hero p {
