@@ -20,6 +20,10 @@ body {
     flex-direction: column;
     overflow-x: hidden;
     /* Évite les scrollbars horizontales */
+
+    /* Cela réduit tout à 85% de la taille originale */
+    /* Alternative pour Firefox qui ne supporte pas toujours "zoom" : */
+
 }
 
 /* --- CANVAS VISUALIZER --- */
@@ -189,11 +193,12 @@ nav a.active-link {
 
 /* --- STRUCTURE PRINCIPALE --- */
 .container {
-    max-width: 1500px;
+    max-width: 2000px;
     margin: 0 auto;
     padding: 60px 40px;
     flex: 1;
     width: 100%;
+    zoom: 0.60;
 }
 
 /* Style Glassmorphism pour les sections afin de voir le visualizer derrière */
@@ -225,7 +230,7 @@ nav a.active-link {
 
 * .image-placeholder {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1500px;
 
     /* --- VERIFIE BIEN QUE CETTE LIGNE EST PRESENTE --- */
     background-image: url("deux_lyceens.webp");
@@ -252,7 +257,7 @@ nav a.active-link {
 
 
 .text-content {
-    max-width: 1200px;
+    max-width: 1500px;
     text-align: justify;
     background-color: rgba(234, 222, 218, 0.95);
     /* Fond crème semi-transparent */
@@ -263,7 +268,7 @@ nav a.active-link {
 
 .text-content p {
     color: #22223B;
-    font-size: 16px;
+    font-size: 23px;
     /* J'ai légèrement augmenté la taille pour la lisibilité (était 14px) */
     line-height: 1.5;
     margin-bottom: 20px;
@@ -599,7 +604,8 @@ footer {
 }
 
 .merci {
-    margin-top: -70px;
+    padding-bottom: 30px;
+    margin-top: -90px;
     text-align: center;
     font-size: 68px;
     margin-bottom: 20px;
@@ -608,4 +614,8 @@ footer {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     filter: drop-shadow(2px 2px 0 #22223B) drop-shadow(-2px -2px 0 #22223B) drop-shadow(2px -2px 0 #22223B) drop-shadow(-2px 2px 0 #22223B) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+.credith2 {
+    margin-top: -50px;
 }
