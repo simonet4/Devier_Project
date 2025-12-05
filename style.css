@@ -120,7 +120,7 @@ header {
 nav {
     display: none;
     width: 100%;
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
     align-items: center;
 }
@@ -130,11 +130,13 @@ nav.active { display: flex; }
 nav ul {
     list-style: none;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
     width: 100%;
-    gap: 10px;
+    gap: 120px;
     margin: 0;
     padding: 0;
+
 }
 
 nav a {
@@ -172,8 +174,11 @@ nav a:hover, nav a.active-link {
 
 /* Style Glassmorphism pour les sections afin de voir le visualizer derrière */
 .content-section {
+    background-image: url("fond_lycee.webp");
+
     background: rgba(234, 222, 218, 0.85); /* Plus transparent */
     backdrop-filter: blur(10px);
+
     border-radius: 20px;
     padding: 60px 40px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -192,6 +197,86 @@ nav a:hover, nav a.active-link {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+}
+*
+.image-placeholder {
+    width: 27%;
+    max-width: 900px;
+
+    /* --- VERIFIE BIEN QUE CETTE LIGNE EST PRESENTE --- */
+    background-image: url("lyceenne.webp");
+    /* ------------------------------------------------- */
+
+    /* Les paramètres pour bien afficher l'image */
+    background-size: cover;
+    /* L'image couvre tout le bloc */
+    background-position: center;
+    /* L'image est centrée */
+    background-repeat: no-repeat;
+    /* Pas de répétition */
+
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    /* Très important : donne une hauteur minimale à la boite */
+    min-height: 600px;
+}
+
+
+.text-content {
+    max-width: 800px;
+    text-align: justify;
+    background-color: rgba(234, 222, 218, 0.95);
+    /* Fond crème semi-transparent */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.text-content p {
+    color: #22223B;
+    font-size: 16px;
+    /* J'ai légèrement augmenté la taille pour la lisibilité (était 14px) */
+    line-height: 1.5;
+    margin-bottom: 20px;
+    /* Réduit un peu la marge (était 30px) */
+    font-weight: 500;
+    /* Rend le texte un peu plus gras pour qu'il ressorte mieux */
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.btn-outline {
+    display: block;
+    padding: 18px 40px;
+    background: transparent;
+    color: #22223B;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 18px;
+    transition: all 0.3s;
+    border: 3px solid #22223B;
+}
+
+.btn-outline:hover {
+    background: linear-gradient(135deg, #B58AFF, #8AFF5B);
+    color: white;
+    border-color: transparent;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(181, 138, 255, 0.4);
 }
 
 .hero {
@@ -218,6 +303,8 @@ nav a:hover, nav a.active-link {
     margin-left: auto;
     margin-right: auto;
     color: #EADEDA;
+    filter: drop-shadow(2px 2px 0 #22223B) drop-shadow(-2px -2px 0 #22223B) drop-shadow(2px -2px 0 #22223B) drop-shadow(-2px 2px 0 #22223B) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+
     text-shadow: 0 2px 4px rgba(0,0,0,0.8); /* Meilleure lisibilité */
 }
 
