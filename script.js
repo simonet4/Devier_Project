@@ -223,10 +223,10 @@ class Particle {
 
         // Jitter basé sur l'intensité audio (ou valeur par défaut si pas d'audio)
         let jitterAmount = hasAudioControls ? 
-            (audioIntensity / 255) * 4 * (volFactor > 0.1 ? volFactor : 0.5) : 
+            (audioIntensity / 255) * 4 * (volFactor > 0.5 ? volFactor : 0.9) : 
             0.3;
         
-        if (jitterAmount > 0.01 && Math.random() > 0.95) {
+        if (jitterAmount > 0.01 && Math.random() > 0.90) {
             this.vx += (Math.random() - 0.5) * jitterAmount;
             this.vy += (Math.random() - 0.5) * jitterAmount;
         }
