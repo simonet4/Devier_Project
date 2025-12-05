@@ -22,7 +22,7 @@ const hasAudioControls = !!(audioEl && muteBtn && volSlider && captureBtn);
 let width, height, particles = [], mouse = { x: -1000, y: -1000 }, isMouseDown = false;
 let audioContext, analyser, source, gainNode, dataArray;
 let audioIntensity = 0, bassIntensity = 0, isAudioInit = false;
-let lastVolume = 0.5; 
+let lastVolume = 0; 
 let isCapturing = false;
 let streamSource = null;
 
@@ -91,9 +91,9 @@ function initAudioEngine() {
     
     gainNode = audioContext.createGain();
     
-    gainNode.gain.value = 0.5; 
-    volSlider.value = 0.5;
-    updateMuteIcon(0.5);
+    gainNode.gain.value = 0; 
+    volSlider.value = 0;
+    updateMuteIcon(0);
     
     connectToGraph(audioEl, true);
     
@@ -223,10 +223,10 @@ class Particle {
 
         // Jitter basé sur l'intensité audio (ou valeur par défaut si pas d'audio)
         let jitterAmount = hasAudioControls ? 
-            (audioIntensity / 255) * 4 * (volFactor > 0.1 ? volFactor : 0.5) : 
+            (audioIntensity / 255) * 4 * (volFactor > 0.5 ? volFactor : 0.9) : 
             0.3;
         
-        if (jitterAmount > 0.01 && Math.random() > 0.95) {
+        if (jitterAmount > 0.01 && Math.random() > 0.90) {
             this.vx += (Math.random() - 0.5) * jitterAmount;
             this.vy += (Math.random() - 0.5) * jitterAmount;
         }
