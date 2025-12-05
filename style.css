@@ -244,7 +244,7 @@ nav a.active-link {
     max-width: 1500px;
 
     /* --- VERIFIE BIEN QUE CETTE LIGNE EST PRESENTE --- */
-    background-image: url("deux_lyceens.webp");
+    background-image: url("2_lyceens_plus_prof_techno.webp");
     /* ------------------------------------------------- */
 
     /* Les paramètres pour bien afficher l'image */
@@ -680,6 +680,33 @@ input[type="range"]::-webkit-slider-thumb:hover {
 #qcm-result.bad {
     background: #B58AFF;
     color: #410554;
+}
+/* ----- BOUTON FINIR LE PARCOURS ----- */
+#finish-btn {
+    width: 100%;
+    padding: 20px;
+    margin-top: 25px;
+    font-size: 26px;
+    font-weight: 800;
+    border-radius: 15px;
+    border: 3px solid #22223B;
+    background: #999;          /* Grisé quand désactivé */
+    color: #EEE;
+    cursor: not-allowed;
+    opacity: 0.6;
+    transition: 0.25s;
+}
+
+/* Quand il devient actif */
+#finish-btn.enabled {
+    background: #8AFF5B;
+    color: #0a3c05;
+    cursor: pointer;
+    opacity: 1;
+}
+
+#finish-btn.enabled:hover {
+    background: #5bd23f;
 }
 
 
