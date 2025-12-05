@@ -203,8 +203,12 @@ nav a.active-link {
     flex: 1;
     width: 100%;
 
-    zoom: 0.60;
 
+
+}
+
+.zoom {
+    zoom: 0.60;
 }
 
 /* Style Glassmorphism pour les sections afin de voir le visualizer derrière */
@@ -284,9 +288,12 @@ nav a.active-link {
 }
 
 #next-page-btn {
-    display: none; /* caché par défaut */
-    background-color: #EADEDA; /* fond clair pour qu'on le voie */
-    color: #22223B; /* texte visible */
+    display: none;
+    /* caché par défaut */
+    background-color: #EADEDA;
+    /* fond clair pour qu'on le voie */
+    color: #22223B;
+    /* texte visible */
     border: 3px solid #22223B;
     padding: 18px 40px;
     border-radius: 50px;
@@ -309,7 +316,8 @@ nav a.active-link {
 .button-group {
     display: flex;
     justify-content: center;
-    margin-top: 20px; /* espace entre bulle et bouton */
+    margin-top: 20px;
+    /* espace entre bulle et bouton */
 }
 
 .btn-outline {
@@ -649,7 +657,8 @@ footer {
 
 /* --- BOITE DE DIALOGUE STYLE POKÉMON --- */
 #dialogue-box {
-    width: 1200px;                /* largeur fixe */
+    width: 1200px;
+    /* largeur fixe */
     max-width: 1200px;
     background: rgba(255, 255, 255, 0.95);
     border: 4px solid #22223B;
@@ -657,7 +666,7 @@ footer {
     padding: 20px 30px;
     font-size: 35px;
     color: #22223B;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
     position: relative;
     margin-bottom: 30px;
 }
@@ -670,8 +679,10 @@ footer {
 
 #dialogue-next {
     position: absolute;
-    bottom: 5px;               /* toujours en bas */
-    right: 20px;                /* toujours à droite */
+    bottom: 5px;
+    /* toujours en bas */
+    right: 20px;
+    /* toujours à droite */
     font-size: 35px;
     opacity: 0.8;
     cursor: pointer;
