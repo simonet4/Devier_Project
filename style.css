@@ -391,7 +391,12 @@ nav a.active-link {
     z-index: 1000;
     transition: all 0.3s ease;
 }
-
+/* Cache les contrôles quand le menu est ouvert */
+.ui-container.hidden {
+    opacity: 0;
+    pointer-events: none; /* Empêche de cliquer dessus quand c'est invisible */
+    visibility: hidden;
+}
 /* SUR ORDINATEUR (Grand écran) : Centré dans le header */
 @media (min-width: 969px) {
     .header-container {
@@ -602,4 +607,3 @@ footer {
     filter: drop-shadow(2px 2px 0 #22223B) drop-shadow(-2px -2px 0 #22223B) drop-shadow(2px -2px 0 #22223B) drop-shadow(-2px 2px 0 #22223B) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
 }
 
-x
