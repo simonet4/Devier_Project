@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NIRD - Visualiseur Interactif</title>
     <link href="style.css" rel="stylesheet" />
-    <link href="./chatbot/chat.css" rel="stylesheet"/>
+    <link href="./chatbot/chat.css" rel="stylesheet" />
 </head>
 
 <body class="unselectable">
@@ -41,7 +41,7 @@
 
                     <label class="q-option">
                         <input type="radio" name="q1" value="A">
-                        A. Non 
+                        A. Non
                     </label>
 
                     <label class="q-option">
@@ -71,25 +71,28 @@
 
                     <label class="q-option">
                         <input type="radio" name="q2" value="C">
-                        C. Il collecte très peu de données 
+                        C. Il collecte très peu de données
                     </label>
                 </div>
                 <button id="qcm-submit" type="button">Valider le QCM</button>
                 <div id="qcm-result"></div>
-                <button id="finish-btn" disabled><a href="Quatrieme_Page.html">Continuer l'histoire</a></button>
+                <button id="finish-btn" disabled><a href="convaincre_encore.html">Continuer l'histoire</a></button>
             </form>
         </div>
         <script src="./qcm3.js"></script>
     </div>
-   <footer>
+    <footer>
         <div class="footer-container">
             <div class="footer-section">
                 <h3>NIRD et sources</h3>
-                <a href = "https://nird.forge.apps.education.fr/" target="_blank">Site officiel de la démarche NIRD</a>
-                <a href = "https://video.echirolles.fr/w/hVykGUtRZqRen6eiutqRvQ" target="_blank">Vidéo : les logiciels libres</a>
-                <a href = "https://www.radiofrance.fr/franceinter/podcasts/le-grand-reportage-de-france-inter/le-grand-reportage-du-mardi-14-octobre-2025-4136495" target="_blank">Podcast : les logiciels libres</a>
-                <a href = "https://www.youtube.com/watch?v=76T8oubek-c" target="_blank">Vidéo : jeter des milliers d'ordinateurs ?</a>
-                <a href = "https://www.youtube.com/watch?v=S6GLqkhykmA" target="_blank">Vidéo : l'ordinateur obsolète</a>
+                <a href="https://nird.forge.apps.education.fr/" target="_blank">Site officiel de la démarche NIRD</a>
+                <a href="https://video.echirolles.fr/w/hVykGUtRZqRen6eiutqRvQ" target="_blank">Vidéo : les logiciels
+                    libres</a>
+                <a href="https://www.radiofrance.fr/franceinter/podcasts/le-grand-reportage-de-france-inter/le-grand-reportage-du-mardi-14-octobre-2025-4136495"
+                    target="_blank">Podcast : les logiciels libres</a>
+                <a href="https://www.youtube.com/watch?v=76T8oubek-c" target="_blank">Vidéo : jeter des milliers
+                    d'ordinateurs ?</a>
+                <a href="https://www.youtube.com/watch?v=S6GLqkhykmA" target="_blank">Vidéo : l'ordinateur obsolète</a>
             </div>
 
             <div class="footer-section">
@@ -110,7 +113,7 @@
             </div>
             <script>
                 document.querySelectorAll('a[data-popup]').forEach(link => {
-                    link.addEventListener('click', function(event) {
+                    link.addEventListener('click', function (event) {
                         event.preventDefault(); // Empêche le comportement par défaut du lien
                         const message = this.getAttribute('data-popup'); // Récupère le texte
                         alert(message); // Affiche la popup
@@ -134,7 +137,7 @@
 
             nav.classList.toggle('active');
             burger.classList.toggle('open');
-            
+
             // Si la barre de contrôle existe sur cette page, on la cache/affiche
             if (ui) {
                 ui.classList.toggle('hidden');
@@ -162,4 +165,5 @@
     </div>
     <script src="./chatbot/chat.js"></script>
 </body>
+
 </html>
