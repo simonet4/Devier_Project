@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crédits</title>
     <link href="style.css" rel="stylesheet" />
-
 </head>
 
-<body>
+<body class="unselectable">
+
+    <canvas id="interactive-bg"></canvas>
+
     <header>
         <div class="header-container">
             <div class="logo">
@@ -23,11 +25,11 @@
 
             <nav id="mainNav">
                 <ul>
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">Page 1</a></li>
+                    <li><a href="index.html">Accueil / Visualiseur</a></li>
+                    <li><a href="débutHistoire.html">L'Histoire</a></li>
                     <li><a href="#">Page 2</a></li>
                     <li><a href="#">Page 3</a></li>
-                    <li><a href="#">Page 4</a></li>
+                    <li><a href="#" class="active-link">Crédits</a></li>
                 </ul>
             </nav>
         </div>
@@ -35,7 +37,7 @@
 
     <div class="container">
         <div class="hero">
-            <div class = "credith2">
+            <div class="credith2">
                 <h2>Site réalisé durant La Nuit de l'Info 2025,</h2>
                 <h2>Par des étudiants en BUT Informatique de Toulouse</h2>
             </div>
@@ -56,8 +58,11 @@
 
     <h2 class="merci">Merci !</h2>
 
+    <!-- Script pour le background interactif -->
+    <script src="script.js"></script>
 
 </body>
+
 <footer>
     <div class="footer-container">
         <div class="footer-section">
@@ -68,11 +73,11 @@
 
         <div class="footer-section">
             <h3>Navigation</h3>
-            <a href="#">Accueil</a>
-            <a href="#">Page 1</a>
+            <a href="index.html">Accueil / Visualiseur</a>
+            <a href="débutHistoire.html">L'Histoire</a>
             <a href="#">Page 2</a>
             <a href="#">Page 3</a>
-            <a href="#">Page 4</a>
+            <a href="crédits.html">Crédits</a>
         </div>
 
         <div class="footer-section">
@@ -97,6 +102,5 @@
         <p>&copy; 2024 NIRD - Lycée Ada Lovelace. Tous droits réservés.</p>
     </div>
 </footer>
-
 
 </html>
