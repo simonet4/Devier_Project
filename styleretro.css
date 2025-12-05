@@ -1,0 +1,421 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Pixellari"; 
+    src: url("./font/Pixellari.ttf") format('truetype');
+    font-weight: normal; 
+    font-style: normal;
+}
+
+body {
+    font-family: "Pixellari", monospace;
+    background-image: url("background_retro.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #EADEDA;
+    line-height: 1.6;
+}
+
+header {
+    background: #EADEDA;
+    padding: 20px 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #22223B;
+    margin: 0;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #B58AFF, #8AFF5B);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.menu-toggle {
+    display: block;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+#burger {
+    width: 30px;
+    height: 2px;
+    background: #22223B;
+    display: block;
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+#burger::before,
+#burger::after {
+    content: '';
+    width: 30px;
+    height: 2px;
+    background: #22223B;
+    display: block;
+    position: absolute;
+    left: 0;
+    transform-origin: center;
+    transition: all 0.3s ease;
+}
+
+#burger::before {
+    top: -8px;
+}
+
+#burger::after {
+    top: 8px;
+}
+
+#burger.open {
+    background: transparent;
+}
+
+#burger.open::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+#burger.open::after {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+nav.active {
+    display: flex;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    color: #22223B;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+nav a:hover {
+    background: #B58AFF;
+    color: white;
+    border-color: #B58AFF;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 968px) {
+    nav a {
+        font-size: 16px;
+    }
+}
+
+
+.container {
+    max-width: 1500px;
+    margin: 0;
+    padding: 60px 40px;
+    flex: 1;
+}
+
+.content-section {
+    background: rgba(234, 222, 218, 0.95);
+    padding: 60px 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.content-section h2 {
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #22223B;
+}
+
+.content-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.image-placeholder {
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+    background: linear-gradient(135deg, #e0e0e0, #f5f5f5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+.text-content {
+    max-width: 800px;
+    text-align: center;
+}
+
+.text-content p {
+    color: #22223B;
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.btn-outline {
+    display: block;
+    padding: 18px 40px;
+    background: transparent;
+    color: #22223B;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+    transition: all 0.3s;
+    border: 3px solid #22223B;
+}
+
+.btn-outline:hover {
+    background: linear-gradient(135deg, #B58AFF, #8AFF5B);
+    color: white;
+    border: 3px solid #22223B;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(181, 138, 255, 0.4);
+}
+
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #B58AFF, #8AFF5B);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(2px 2px 0 #22223B) drop-shadow(-2px -2px 0 #22223B) drop-shadow(2px -2px 0 #22223B) drop-shadow(-2px 2px 0 #22223B) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #EADEDA;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 35px;
+    margin: 10px;
+    background: #B58AFF;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: 2px solid #B58AFF;
+}
+
+.btn:hover {
+    background: transparent;
+    color: #B58AFF;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(181, 138, 255, 0.3);
+}
+
+.btn-periwinkle {
+    background: #8AFF5B;
+    color: #22223B;
+    border-color: #8AFF5B;
+}
+
+.btn-periwinkle:hover {
+    background: transparent;
+    color: #8AFF5B;
+    box-shadow: 0 8px 20px rgba(138, 255, 91, 0.3);
+}
+
+.btn-neon {
+    background: transparent;
+    color: #EADEDA;
+    border-color: #EADEDA;
+}
+
+.btn-neon:hover {
+    background: #EADEDA;
+    color: #22223B;
+    box-shadow: 0 8px 20px rgba(234, 222, 218, 0.3);
+}
+
+footer {
+    background: #EADEDA;
+    color: #22223B;
+    padding: 60px 40px 30px;
+    margin-top: 80px;
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.footer-section h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #22223B;
+    font-weight: 700;
+}
+
+.footer-section p,
+.footer-section a {
+    color: #22223B;
+    text-decoration: none;
+    line-height: 2;
+    display: block;
+    transition: all 0.3s;
+}
+
+.footer-section a:hover {
+    color: #B58AFF;
+    transform: translateX(5px);
+}
+
+.footer-bottom {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-top: 30px;
+    border-top: 2px solid #22223B;
+    text-align: center;
+    color: #22223B;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #B58AFF, #8AFF5B);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 5px 15px rgba(181, 138, 255, 0.5);
+}
+
+.credit-boxnom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 90px;
+}
+
+.credit-boxnom p {
+    background: linear-gradient(135deg, #8c67cc 0%, #61b340 100%);
+    color: white;
+    padding: 12px 20px;
+    font-weight: bold;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.credit-boxnom p:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.merci {
+    margin-top: -70px;
+    text-align: center;
+    font-size: 68px;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #B58AFF, #8AFF5B);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(2px 2px 0 #22223B) drop-shadow(-2px -2px 0 #22223B) drop-shadow(2px -2px 0 #22223B) drop-shadow(-2px 2px 0 #22223B) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
