@@ -1113,9 +1113,6 @@ footer {
 /* Responsive */
 @media (max-width: 768px) {
 
-
-
-    .hero,
     .main-cta,
     .alternatives {
         padding: 60px 24px;
