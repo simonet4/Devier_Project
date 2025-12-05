@@ -56,7 +56,7 @@
                     <div id="dialogue-next">▶</div>
                 </div>
                 <div class="button-group">
-                    <a href="page-suivante.html" id="next-page-btn" class="btn-outline"
+                    <a href="DeuxièmePage.html" id="next-page-btn" class="btn-outline"
                         style="display: none;">Suivant</a>
                 </div>
             </div>
@@ -93,46 +93,44 @@
                 burger.classList.toggle('open');
             }
             const dialogues = [
-                "<b>Alice</b> : Salut Robert ! Ton weekend s’est bien passé ?",
-                "<b>Robert</b> : Oh salut Alice ! Oui nickel je suis allé faire de la rando avec mes parents, c’était trop bien ! Et toi ?",
-                "<b>Alice</b> : Oh génial ça devait être beau ! Moi calme, je suis restée chez moi tranquille.",
-                "Ils entrent en cours et doivent aller sur les PC pour un projet, mais ils sont très lents...",
-                "<b>Alice</b> : C’est pas possible, les PC ramènent trop ! Ils auraient jamais dû passer à Windows 11 !",
-                "<b>Robert</b> : C’est clair ! Monsieur, pourquoi on peut pas mettre Linux ? Ça buguerait moins.",
-                "<b>Prof</b> : Si c’était si simple, on l’aurait déjà fait. L’administration dit que ce serait une perte de temps."
+                { text: "<b>Alice</b> : Salut Robert ! Ton weekend s’est bien passé ?", image: "deux_lyceens.webp" },
+                { text: "<b>Robert</b> : Oh salut Alice ! Oui nickel je suis allé faire de la rando avec mes parents, c’était trop bien ! Et toi ?", image: "deux_lyceens.webp" },
+                { text: "<b>Alice</b> : Oh génial ça devait être beau ! Moi calme, je suis restée chez moi tranquille.", image: "deux_lyceens.webp" },
+                { text: "Ils entrent en cours et doivent aller sur les PC pour un projet, mais ils sont très lents...", image: "deux_lyceens.webp" },
+                { text: "<b>Alice</b> : C’est pas possible, les PC ramènent trop ! Ils auraient jamais dû passer à Windows 11 !", image: "deux_lyceens.webp" },
+                { text: "<b>Robert</b> : C’est clair ! Monsieur, pourquoi on peut pas mettre Linux ? Ça buguerait moins.", image: "2_lyceens_plus_prof_techno.webp" },
+                { text: "<b>Prof</b> : Si c’était si simple, on l’aurait déjà fait. L’administration dit que ce serait une perte de temps.", image: "2_lyceens_plus_prof_techno.webp" }
             ];
-
             let index = 0;
             let charIndex = 0;
             let isTyping = false;
 
+            const imagePlaceholder = document.querySelector(".image-placeholder");
             const textBox = document.getElementById("dialogue-text");
-            const nextBtn = document.getElementById("dialogue-next"); // flèche pour passer dialogues
-            const nextPageBtn = document.getElementById("next-page-btn"); // bouton page suivante
+            const nextBtn = document.getElementById("dialogue-next");
+            const nextPageBtn = document.getElementById("next-page-btn");
 
             function typeDialogueHTML() {
                 isTyping = true;
                 const current = dialogues[index];
-                textBox.innerHTML = current.substring(0, charIndex);
+                textBox.innerHTML = current.text.substring(0, charIndex);
                 charIndex++;
 
-                if (charIndex <= current.length) {
+                if (charIndex <= current.text.length) {
                     setTimeout(typeDialogueHTML, 20);
                 } else {
                     isTyping = false;
+                    imagePlaceholder.style.backgroundImage = `url('${current.image}')`;
 
-                    // La flèche n'apparaît que si ce n'est pas le dernier dialogue
                     if (index < dialogues.length - 1) {
                         nextBtn.style.display = "block";
                     } else {
-                        // Dernier dialogue : cacher la flèche et afficher le bouton "Suivant" pour la page suivante
                         nextBtn.style.display = "none";
                         nextPageBtn.style.display = "block";
                     }
                 }
             }
 
-            // Passe au dialogue suivant
             function nextDialogue() {
                 if (isTyping) return;
 
@@ -142,16 +140,11 @@
                     charIndex = 0;
                     typeDialogueHTML();
                 }
-                // Si on est au dernier dialogue, ne rien faire
             }
 
-            // Clic n'importe où pour passer au dialogue suivant
             document.addEventListener("click", nextDialogue);
-
-            // Clic sur la flèche pour passer au dialogue suivant
             nextBtn.addEventListener("click", nextDialogue);
 
-            // Lancement du premier dialogue
             typeDialogueHTML();
         </script>
 
