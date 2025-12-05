@@ -56,3 +56,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+// Redirection sécurisée
+finishBtn.addEventListener("click", () => {
+    if (!finishBtn.disabled) {
+        window.location.href = "TroisiemePage.html";
+    }
+});
