@@ -5,9 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ressources</title>
     <link rel="stylesheet" href="style.css">
-    <link href="./chatbot/chat.css" rel="stylesheet"/>
 </head>
-<body>
+<body class="unselectable">
+
+    <!-- Canvas pour le background interactif -->
+    <canvas id="interactive-bg"></canvas>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('mainNav');
+            const burger = document.getElementById('burger');
+
+            nav.classList.toggle('active');
+            burger.classList.toggle('open');
+        }
+    </script>
 
     <!-- Lien vers NIRD -->
     <section class="main-cta">
@@ -263,6 +275,9 @@
             </div>
         </div>
     </section>
+
+    <!-- Script pour le background interactif (sans audio) -->
+    <script src="script.js"></script>
     
 </body>
 </html>
