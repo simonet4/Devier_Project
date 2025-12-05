@@ -1,84 +1,91 @@
-# 🎵 NIRD - Lycée Ada Lovelace
+# 🌌 NIRD - Le Village Numérique Résistant
 
 ![Nuit de l'Info 2025](https://img.shields.io/badge/Nuit%20de%20l'Info-2025-purple?style=for-the-badge&logo=moon)
-![Team Devier](https://img.shields.io/badge/Équipe-Devier-green?style=for-the-badge)
-![Tech Stack](https://img.shields.io/badge/HTML5-CSS3-JavaScript-blue?style=for-the-badge)
+![Team Dev'ier](https://img.shields.io/badge/Équipe-Dev'ier-green?style=for-the-badge)
 
-> **Projet réalisé dans le cadre de la Nuit de l'Info 2025 par des étudiants en BUT Informatique de l'Université de Toulouse.**
+> **Projet réalisé par l'équipe "Dev'ier" (IUT Informatique de Toulouse) dans le cadre de La Nuit de l'Info 2025.**
 
-NIRD est un site web narratif et interactif conçu pour le fictif **Lycée Ada Lovelace**. Le projet combine une narration visuelle sur les enjeux du numérique (migration vers Linux, open-source) et une expérience sensorielle via un visualiseur audio avancé.
+## 📖 Le Sujet : Le Village Numérique Résistant
 
----
+[cite_start]Face à la fin du support de Windows 10 et à l'hégémonie des GAFAM, ce projet propose une solution pour aider les établissements scolaires à "tenir tête aux Big Tech"[cite: 8].
 
-## ⚠️ Avertissement de Compatibilité (Audio)
-
-### 🚨 **Problème connu avec Mozilla Firefox**
-
-Le module de visualisation audio "Mode Audio PC" utilise l'API moderne `navigator.mediaDevices.getDisplayMedia`.
-
-Actuellement, **Firefox ne supporte pas la capture de l'audio système** (le son sortant de votre ordinateur) via cette API sous Windows. Par conséquent, si vous utilisez Firefox :
-* Le visualiseur fonctionnera avec la musique d'ambiance intégrée.
-* **Le bouton "Mode Audio PC" ne pourra pas capturer le son de vos autres applications (Spotify, YouTube, etc.).**
-
-👉 **Recommandation :** Pour une expérience optimale et pour tester la réactivité du visualiseur sur vos propres musiques, **veuillez utiliser Google Chrome, Microsoft Edge ou Brave (duckduckgo aussi).**
+[cite_start]Notre application web promeut la démarche **NIRD** (Numérique Inclusif, Responsable et Durable) [cite: 12] à travers une expérience narrative et interactive. Elle démontre comment le logiciel libre (Linux) peut sauver le matériel de l'obsolescence programmée.
 
 ---
 
-## ✨ Fonctionnalités Principales
+## 🏆 Défis Relevés (Challenges)
 
-### 1. 🎨 Visualiseur Audio Interactif (Canvas API)
-La page d'accueil propose une expérience immersive développée en Vanilla JS (sans librairie externe) :
-* **Particules Réactives :** Des centaines de billes réagissent à la souris (effet de répulsion/vortex) et au rythme de la musique.
-* **Analyse de Fréquence :** Utilisation de l'API *Web Audio* pour analyser les fréquences (Bass Kick) et faire pulser les particules en temps réel.
-* **Mode "Audio PC" 📡 :** Permet à l'utilisateur de visualiser le son sortant de son propre ordinateur en partageant l'audio de son système (Chrome/Edge uniquement).
+### 1. 🐍 Défi CAPCOD : "Hidden Snake"
+[cite_start]**Objectif :** Cacher un jeu de snake au sein du site[cite: 32].
 
-### 2. 📖 Narration Interactive
-Une série de pages (`débutHistoire.html`, etc.) raconte l'histoire d'Alice et Robert, abordant des thématiques liées à l'obsolescence logicielle et la migration vers des systèmes libres au sein du lycée.
-* Interface "Glassmorphism" pour une esthétique moderne.
-* Navigation fluide via un menu burger responsive.
+Nous avons intégré un Snake satirique qui dénonce la collecte de données, caché dans l'application.
 
-### 3. 🐱 Chatbot "Moustache"
-Un compagnon virtuel est intégré en bas de page pour accompagner l'utilisateur (du mieux qu'il pourra, du haut de ses plumes et croquettes).
+* **Le Concept :** "Vous êtes Microsoft. Vous devez collecter les données personnelles des utilisateurs pour satisfaire vos investisseurs."
+* **Les Graphismes :**
+    * **Tête :** Logo Microsoft.
+    * **Nourriture :** Bases de données personnelles.
+    * **Corps :** Pièces de monnaie (le capital).
+    * **Fond :** Code "Matrix" vert.
+* **Activation :** *(Cliquez sur le logo NIRD 5 fois / Ou appuyez sur la touche 'S' / Ou via l'url `snake.html`)*.
 
----
+### 2. 🤖 Défi VIVERIS : "Chat'bruti"
+[cite_start]**Objectif :** Créer un chatbot "complètement à côté de la plaque"[cite: 32].
 
-## 🚀 Installation et Utilisation
+Rencontrez **Moustache**, notre assistant virtuel félin.
+* Il ne répond jamais vraiment aux questions techniques.
+* Il préfère parler de croquettes ou philosopher sur l'informatique de manière absurde.
+* Il personnifie l'ironie face aux promesses parfois vides de l'IA générative.
 
-Ce projet est un site statique (HTML/CSS/JS). Aucune installation complexe (npm, node) n'est requise.
+### 3. 🎨 Défi CAPGEMINI : "Visualisation Audio"
+[cite_start]**Objectif :** Un visuel enivrant, original ou drôle réagissant au son[cite: 32].
 
-## 🛠️ Technologies Utilisées
+Notre page d'accueil est un visualiseur audio interactif développé en pur JavaScript (Canvas API + Web Audio API) :
+* Des particules réagissent aux basses fréquences de la musique.
+* **Interaction :** Création de vortex avec la souris.
+* **Mode Audio PC :** Capture le son système de l'ordinateur de l'utilisateur pour animer le site avec sa propre musique (Spotify/YouTube).
+(si vous l'osez, rendrez muet plusieurs foirs la musique de l'accueil, une surprise vous attendra (pas de rickroll car ce n'est pas libre de droit))
 
-* **HTML5** : Structure sémantique.
-* **CSS3** : Flexbox, Grid, Animations, Variables CSS, Backdrop-filter (Glassmorphism).
-* **JavaScript (ES6+)** :
-    * **Canvas API** : Dessin et animation des particules.
-    * **Web Audio API** : Analyseur FFT (Fast Fourier Transform), GainNode, MediaStreamSource.
-    * **MediaDevices API** : Capture d'écran et d'audio système.
+### 4. 🖱️ Défi CAPCOD : "Hair'gonomie"
+[cite_start]**Objectif :** Repenser l'ergonomie sans conventions[cite: 32].
 
----
-
-## 👥 L'Équipe Devier
-
-Un grand merci à toute l'équipe ayant travaillé sur ce projet durant cette nuit blanche :
-
-| Membre | Rôle |
-| :--- | :--- |
-| **Joseph LALOT** | Développeur |
-| **Victor SIMONET** | Développeur |
-| **Ilyas TURMINE** | Développeur |
-| **Unai MURILLO** | Développeur |
-| **Guillaume BOURNAZEL-LOTY** | Développeur |
-| **Lucas FERNANDES** | Développeur |
-| **Rémi SAGNES** | Développeur |
-| **Anaïs DUVAL** | Développeur / Chef d'équipe|
-| **Elliot ISKEN--ANDERSEN NEXO** | Développeur |
-| **Eulalie FRAYSSE** | Développeur |
+Nous avons alterné entre deux styles ergonomiques opposés pour marquer la rupture technologique :
+* **Glassmorphism Moderne :** Fluide et transparent pour le futur (NIRD).
+* **Pixel Art Rétro :** Interface brute et nostalgique pour rappeler les racines de l'informatique, cassant les codes du web design lisse actuel.
 
 ---
 
-## 📄 Licence & Contexte
+## ✨ Fonctionnalités & Contenu
 
-Ce projet a été créé à des fins éducatives et compétitives pour la **Nuit de l'Info 2025**.
-*Lycée Ada Lovelace est une entité fictive créée pour les besoins du défi.*
+### 📖 L'Histoire (Visual Novel)
+Suivez **Alice et Robert**, élèves au lycée Ada Lovelace, dans leur quête pour convaincre l'administration et les élèves de passer au Libre.
+* Scénario interactif avec dialogues.
+* Arguments réels sur l'écologie et la protection des données.
 
-© 2025 Équipe Devier - Tous droits réservés.
+### 🧠 QCM de Validation
+Un quiz interactif pour vérifier si l'utilisateur a bien compris les enjeux du Green IT et des monopoles numériques.
+
+---
+
+## ⚠️ Compatibilité Navigateur
+
+Pour le **Défi Visualisation Audio**, nous utilisons l'API `getDisplayMedia`.
+* ✅ **Recommandé :** Google Chrome, Microsoft Edge, Brave.
+* ⚠️ **Firefox :** La capture de l'audio système n'est pas supportée sous Windows. Le visualiseur fonctionnera uniquement avec la musique d'ambiance intégrée.
+
+---
+
+## 👥 L'Équipe Dev'ier
+
+* **Anaïs DUVAL** (Chef)
+* **Joseph LALOT**
+* **Victor SIMONET**
+* **Ilyas TURMINE**
+* **Unai MURILLO**
+* **Guillaume BOURNAZEL-LOTY**
+* **Lucas FERNANDES**
+* **Rémi SAGNES**
+* **Elliot ISKEN--ANDERSEN NEXO**
+* **Eulalie FRAYSSE**
+
+---
+*Projet réalisé sous licence libre - Nuit de l'Info 2025.*
