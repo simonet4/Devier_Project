@@ -697,6 +697,10 @@ input[type="range"]::-webkit-slider-thumb:hover {
     transition: 0.25s;
 }
 
+#finish-btn a {
+    text-decoration: none;
+}
+
 /* Quand il devient actif */
 #finish-btn.enabled {
     background: #8AFF5B;
@@ -830,7 +834,7 @@ footer {
 }
 
 .merci {
-    padding-bottom: 30px;
+    padding-bottom: 50px;
     margin-top: -90px;
     text-align: center;
     font-size: 68px;
