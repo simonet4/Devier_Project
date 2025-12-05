@@ -10,54 +10,78 @@
 </head>
 
 <body class="unselectable">
-
     <canvas id="interactive-bg"></canvas>
-
     <header>
         <div class="header-container">
-            <a href="index.html" class="logo-link">
-                <div class="logo">
-                    <div class="logo-icon">N</div>
-                    <h1>NIRD</h1>
-                </div>
-            </a>
-
-            <div class="ui-container">
-                <div class="volume-group">
-                    <button id="mute-btn" class="vol-btn">🔇</button>
-                    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0">
-                </div>
-        
-                <div class="separator"></div>
-        
-                <button id="capture-btn" class="capture-btn">📡 Mode Audio PC</button>
+            <div class="logo">
+                <div class="logo-icon">N</div>
+                <h1>NIRD</h1>
             </div>
-
             <button class="menu-toggle" onclick="toggleMenu()">
                 <span id="burger"></span>
             </button>
-
             <nav id="mainNav">
                 <ul>
-                    <li><a href="index.html">Accueil / Visualiseur</a></li>
+                    <li><a href="#">Accueil / Visualiseur</a></li>
                     <li><a href="débutHistoire.html">L'Histoire</a></li>
-                    <li><a href="crédits.html">Crédits</a></li>
+                    <li><a href="#">Page 2</a></li>
+                    <li><a href="#" class="active-link">QCM</a></li>
+                    <li><a href="#">Page 4</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-
     <div class="container">
-        <div class="hero">
-            <h2>Bienvenue au lycée Ada Lovelace</h2>
-            <p>Interagissez avec les particules en rythme avec la musique. Utilisez votre souris pour créer des vortex ou activez le mode Audio PC pour visualiser vos propres sons.</p>
-            <a href="débutHistoire.html" class="btn btn-periwinkle">Commencer l'Histoire</a>
+        <div id="qcm-container">
+            <h2>QCM Final</h2>
+            <form id="qcm-form">
+                <!-- QUESTION 1 -->
+                <div class="qcm-question">
+                    <p class="q-title">1. Quels sont les trois piliers du NIRD ?</p>
+
+                    <label class="q-option">
+                        <input type="radio" name="q1" value="A">
+                        A. Inclusion, Responsabilité, Durabilité
+                    </label>
+
+                    <label class="q-option">
+                        <input type="radio" name="q1" value="B">
+                        B. Marketing, Profit, Cloud
+                    </label>
+
+                    <label class="q-option">
+                        <input type="radio" name="q1" value="C">
+                        C. Patates, Wifi, Windows
+                    </label>
+                </div>
+
+                <!-- QUESTION 2 -->
+                <div class="qcm-question">
+                    <p class="q-title">2. Une action du NIRD ?</p>
+
+                    <label class="q-option">
+                        <input type="radio" name="q2" value="A">
+                        A. Reconditionner les PC
+                    </label>
+
+                    <label class="q-option">
+                        <input type="radio" name="q2" value="B">
+                        B. Acheter des PC neufs
+                    </label>
+
+                    <label class="q-option">
+                        <input type="radio" name="q2" value="C">
+                        C. Surveiller les élèves
+                    </label>
+                </div>
+                <button id="qcm-submit" type="button">Valider le QCM</button>
+                <div id="qcm-result"></div>
+                <button id="finish-btn" disabled><a href="crédits.html">Terminer l'histoire</a></button>
+            </form>
         </div>
+        <script src="./qcm5.js"></script>
     </div>
-
-    <audio id="audio-player" src="BackgroundBossa.mp3" loop crossOrigin="anonymous"></audio>
-
-    <footer>
+   <footer>
         <div class="footer-container">
             <div class="footer-section">
                 <h3>NIRD et sources</h3>
@@ -72,7 +96,9 @@
                 <h3>Navigation</h3>
                 <a href="#">Accueil</a>
                 <a href="débutHistoire.html">L'Histoire</a>
-                <a href="crédits.html">Crédits</a>
+                <a href="#">Page 2</a>
+                <a href="#">Page 3</a>
+                <a href="#">Page 4</a>
             </div>
 
             <div class="footer-section">
@@ -117,7 +143,6 @@
     </script>
 
     <script src="script.js"></script>
-
     <!-- ChatBox -->
     <div id="chat-icon">
         <img src="./chatbot/chatbotreact.png" alt="Chat">
