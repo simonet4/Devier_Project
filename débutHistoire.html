@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Début de l'histoire NIRD</title>
     <link href="style.css" rel="stylesheet" />
-
 </head>
 
-<body>
+<body class="unselectable">
+
+    <canvas id="interactive-bg"></canvas>
+
     <header>
         <div class="header-container">
             <div class="logo">
@@ -23,8 +25,8 @@
 
             <nav id="mainNav">
                 <ul>
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">Page 1</a></li>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="#" class="active-link">L'Histoire</a></li>
                     <li><a href="#">Page 2</a></li>
                     <li><a href="#">Page 3</a></li>
                     <li><a href="#">Page 4</a></li>
@@ -32,6 +34,7 @@
             </nav>
         </div>
     </header>
+
     <script>
         function toggleMenu() {
             const nav = document.getElementById('mainNav');
@@ -51,23 +54,23 @@
 
                 </div>
                 <div class="text-content">
-                    <p><b>Alice</b>: Salut Robert ! Ton weekend s’est bien passé ? <br>
+                    <p><b>Alice</b>: Salut Robert ! Ton weekend s'est bien passé ? <br>
                         <b>Robert</b> : Oh salut Alice ! Oui nickel je suis allé faire de la rando avec mes parents
-                        c’était
+                        c'était
                         <br>
-                        trop bien ! Et toi t’a fait quoi de beau ?<br>
+                        trop bien ! Et toi t'a fait quoi de beau ?<br>
                         <b>Alice</b> : Oh génial ça devait être beau ! Bah moi, pas grand-chose, je suis juste
                         restée chez
                         moi tranquille.<br>
                         Ils entrent en cours et ils doivent aller sur les pc pour un projet mais ils sont très lents
                         et ils se questionnent sur le pourquoi du comment<br>
-                        <b>Alice</b>: Oh mais c’est pas possible, les pc ils font que ramer ils auraient jamais dû
+                        <b>Alice</b>: Oh mais c'est pas possible, les pc ils font que ramer ils auraient jamais dû
                         faire
                         la mise à jour vers Windows 11 !<br>
-                        <b>Robert</b> : C’est vrai, c’est vraiment agaçant ! Monsieur pourquoi on pourrait pas les
+                        <b>Robert</b> : C'est vrai, c'est vraiment agaçant ! Monsieur pourquoi on pourrait pas les
                         passer
-                        sur Linux, ça permettrait de les faire tenir plus longtemps et qu’ils bug moins. <br>
-                        <b>Prof de Techno</b> : Robert, si c’était si simple, ça se saurait, l’administration dit
+                        sur Linux, ça permettrait de les faire tenir plus longtemps et qu'ils bug moins. <br>
+                        <b>Prof de Techno</b> : Robert, si c'était si simple, ça se saurait, l'administration dit
                         que ça
                         serait une perte de temps.
                     </p>
@@ -80,7 +83,11 @@
         </div>
     </div>
 
+    <!-- Utilisation du même script.js -->
+    <script src="script.js"></script>
+
 </body>
+
 <footer>
     <div class="footer-container">
         <div class="footer-section">
@@ -91,8 +98,8 @@
 
         <div class="footer-section">
             <h3>Navigation</h3>
-            <a href="#">Accueil</a>
-            <a href="#">Page 1</a>
+            <a href="index.html">Accueil</a>
+            <a href="débutHistoire.html">L'Histoire</a>
             <a href="#">Page 2</a>
             <a href="#">Page 3</a>
             <a href="#">Page 4</a>
