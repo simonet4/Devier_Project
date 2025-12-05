@@ -12,13 +12,14 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     /* On remplace l'image.webp par une couleur de fond solide sombre 
        pour que le canvas se voit bien par dessus */
-    background-color: #22223B; 
+    background-color: #22223B;
     color: #EADEDA;
     line-height: 1.6;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow-x: hidden; /* Évite les scrollbars horizontales */
+    overflow-x: hidden;
+    /* Évite les scrollbars horizontales */
 }
 
 /* --- CANVAS VISUALIZER --- */
@@ -28,13 +29,16 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Place le canvas derrière le contenu */
-    pointer-events: auto; /* Permet l'interaction souris */
+    z-index: -1;
+    /* Place le canvas derrière le contenu */
+    pointer-events: auto;
+    /* Permet l'interaction souris */
 }
 
 /* --- HEADER & NAVIGATION --- */
 header {
-    background: rgba(234, 222, 218, 0.95); /* Légère transparence pour voir les particules */
+    background: rgba(234, 222, 218, 0.95);
+    /* Légère transparence pour voir les particules */
     padding: 20px 40px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     position: sticky;
@@ -110,12 +114,27 @@ header {
     transition: all 0.3s ease;
 }
 
-#burger::before { top: -8px; }
-#burger::after { top: 8px; }
+#burger::before {
+    top: -8px;
+}
 
-#burger.open { background: transparent; }
-#burger.open::before { transform: rotate(45deg); top: 0; }
-#burger.open::after { transform: rotate(-45deg); top: 0; }
+#burger::after {
+    top: 8px;
+}
+
+#burger.open {
+    background: transparent;
+}
+
+#burger.open::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+#burger.open::after {
+    transform: rotate(-45deg);
+    top: 0;
+}
 
 nav {
     display: none;
@@ -125,7 +144,9 @@ nav {
     align-items: center;
 }
 
-nav.active { display: flex; }
+nav.active {
+    display: flex;
+}
 
 nav ul {
     list-style: none;
@@ -152,7 +173,8 @@ nav a {
     text-align: center;
 }
 
-nav a:hover, nav a.active-link {
+nav a:hover,
+nav a.active-link {
     background: #B58AFF;
     color: white;
     border-color: #B58AFF;
@@ -160,7 +182,9 @@ nav a:hover, nav a.active-link {
 }
 
 @media (max-width: 968px) {
-    nav a { font-size: 16px; }
+    nav a {
+        font-size: 16px;
+    }
 }
 
 /* --- STRUCTURE PRINCIPALE --- */
@@ -176,7 +200,7 @@ nav a:hover, nav a.active-link {
 .content-section {
     background-image: url("fond_lycee.webp");
 
-    background: rgba(234, 222, 218, 0.85); /* Plus transparent */
+    /* Plus transparent */
     backdrop-filter: blur(10px);
 
     border-radius: 20px;
@@ -198,8 +222,8 @@ nav a:hover, nav a.active-link {
     align-items: center;
     gap: 10px;
 }
-*
-.image-placeholder {
+
+* .image-placeholder {
     width: 27%;
     max-width: 900px;
 
@@ -293,7 +317,7 @@ nav a:hover, nav a.active-link {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     /* Ombre modifiée pour lisibilité sur fond sombre */
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
 }
 
 .hero p {
@@ -305,7 +329,8 @@ nav a:hover, nav a.active-link {
     color: #EADEDA;
     filter: drop-shadow(2px 2px 0 #22223B) drop-shadow(-2px -2px 0 #22223B) drop-shadow(2px -2px 0 #22223B) drop-shadow(-2px 2px 0 #22223B) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
 
-    text-shadow: 0 2px 4px rgba(0,0,0,0.8); /* Meilleure lisibilité */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    /* Meilleure lisibilité */
 }
 
 /* --- BOUTONS --- */
@@ -350,13 +375,15 @@ nav a:hover, nav a.active-link {
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
-    
+
     display: flex;
     align-items: center;
     gap: 20px;
-    padding: 10px 25px; /* Un peu plus compact */
-    
-    background: rgba(34, 34, 59, 0.9); /* Fond sombre opaque pour bien ressortir sur le header clair */
+    padding: 10px 25px;
+    /* Un peu plus compact */
+
+    background: rgba(34, 34, 59, 0.9);
+    /* Fond sombre opaque pour bien ressortir sur le header clair */
     backdrop-filter: blur(10px);
     border-radius: 50px;
     border: 1px solid rgba(181, 138, 255, 0.3);
@@ -368,7 +395,8 @@ nav a:hover, nav a.active-link {
 /* SUR ORDINATEUR (Grand écran) : Centré dans le header */
 @media (min-width: 969px) {
     .header-container {
-        position: relative; /* Nécessaire pour le centrage absolu des enfants */
+        position: relative;
+        /* Nécessaire pour le centrage absolu des enfants */
     }
 
     .ui-container {
@@ -376,10 +404,13 @@ nav a:hover, nav a.active-link {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        bottom: auto; /* On annule la position basse */
-        
-        padding: 8px 20px; /* Encore plus fin pour rentrer dans le header */
-        box-shadow: none; /* Moins d'ombre nécessaire dans le header */
+        bottom: auto;
+        /* On annule la position basse */
+
+        padding: 8px 20px;
+        /* Encore plus fin pour rentrer dans le header */
+        box-shadow: none;
+        /* Moins d'ombre nécessaire dans le header */
     }
 }
 
@@ -407,6 +438,7 @@ input[type="range"] {
     border-radius: 3px;
     outline: none;
 }
+
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 16px;
@@ -416,7 +448,10 @@ input[type="range"]::-webkit-slider-thumb {
     cursor: pointer;
     transition: transform 0.1s;
 }
-input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
 
 .separator {
     width: 1px;
@@ -436,7 +471,9 @@ input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); }
     transition: all 0.3s;
     font-size: 14px;
 }
-.capture-btn:hover, .capture-btn.capture-active {
+
+.capture-btn:hover,
+.capture-btn.capture-active {
     background: #8AFF5B;
     color: #22223B;
     box-shadow: 0 0 15px rgba(138, 255, 91, 0.4);
@@ -447,7 +484,8 @@ footer {
     background: rgba(234, 222, 218, 0.95);
     color: #22223B;
     padding: 60px 40px 30px;
-    margin-top: auto; /* Pousse le footer en bas */
+    margin-top: auto;
+    /* Pousse le footer en bas */
 }
 
 .footer-container {
@@ -466,7 +504,8 @@ footer {
     font-weight: 700;
 }
 
-.footer-section p, .footer-section a {
+.footer-section p,
+.footer-section a {
     color: #22223B;
     text-decoration: none;
     line-height: 2;
@@ -516,12 +555,18 @@ footer {
 /* --- UTILITAIRES --- */
 /* Empêche la sélection de texte (utile pour le visualiseur) */
 .unselectable {
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none;    /* Firefox */
-    -ms-user-select: none;     /* IE/Edge */
-    user-select: none;         /* Standard */
-    cursor: default;           /* Curseur par défaut au lieu du curseur de texte */
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE/Edge */
+    user-select: none;
+    /* Standard */
+    cursor: default;
+    /* Curseur par défaut au lieu du curseur de texte */
 }
+
 .credit-boxnom {
     display: flex;
     flex-wrap: wrap;
@@ -556,3 +601,5 @@ footer {
     background-clip: text;
     filter: drop-shadow(2px 2px 0 #22223B) drop-shadow(-2px -2px 0 #22223B) drop-shadow(2px -2px 0 #22223B) drop-shadow(-2px 2px 0 #22223B) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
 }
+
+x
