@@ -189,11 +189,12 @@ nav a.active-link {
 
 /* --- STRUCTURE PRINCIPALE --- */
 .container {
-    max-width: 1500px;
+    max-width: 2000px;
     margin: 0 auto;
     padding: 60px 40px;
     flex: 1;
     width: 100%;
+    zoom : 0.6;
 }
 
 /* Style Glassmorphism pour les sections afin de voir le visualizer derrière */
@@ -224,11 +225,11 @@ nav a.active-link {
 }
 
 * .image-placeholder {
-    width: 27%;
+    width: 100%;
     max-width: 900px;
 
     /* --- VERIFIE BIEN QUE CETTE LIGNE EST PRESENTE --- */
-    background-image: url("lyceenne.webp");
+    background-image: url("deux_lyceens.webp");
     /* ------------------------------------------------- */
 
     /* Les paramètres pour bien afficher l'image */
@@ -274,11 +275,8 @@ nav a.active-link {
 
 .button-group {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
+    justify-content: center;
+    margin-top: 20px; /* espace entre bulle et bouton */
 }
 
 .btn-outline {
@@ -596,7 +594,8 @@ footer {
 }
 
 .merci {
-    margin-top: -70px;
+    padding-bottom: 30px;
+    margin-top: -90px;
     text-align: center;
     font-size: 68px;
     margin-bottom: 20px;
@@ -607,3 +606,42 @@ footer {
     filter: drop-shadow(2px 2px 0 #22223B) drop-shadow(-2px -2px 0 #22223B) drop-shadow(2px -2px 0 #22223B) drop-shadow(-2px 2px 0 #22223B) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
 }
 
+.credith2 {
+    margin-top: -50px;
+}
+
+/* --- BOITE DE DIALOGUE STYLE POKÉMON --- */
+#dialogue-box {
+    width: 600px;                /* largeur fixe */
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 4px solid #22223B;
+    border-radius: 20px;
+    padding: 20px 30px;
+    font-size: 18px;
+    color: #22223B;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    position: relative;          /* IMPORTANT → pour placer la flèche */
+    margin-bottom: 30px; /* ← ajoute cet espace sous la bulle */
+}
+
+#dialogue-text {
+    white-space: normal;
+    word-wrap: break-word;
+    line-height: 1.5;
+}
+
+#dialogue-next {
+    position: absolute;
+    bottom: 5px;               /* toujours en bas */
+    right: 20px;                /* toujours à droite */
+    font-size: 22px;
+    opacity: 0.8;
+    cursor: pointer;
+    user-select: none;
+    transition: opacity 0.2s;
+}
+
+#dialogue-next:hover {
+    opacity: 1;
+}
