@@ -22,7 +22,7 @@ const hasAudioControls = !!(audioEl && muteBtn && volSlider && captureBtn);
 let width, height, particles = [], mouse = { x: -1000, y: -1000 }, isMouseDown = false;
 let audioContext, analyser, source, gainNode, dataArray;
 let audioIntensity = 0, bassIntensity = 0, isAudioInit = false;
-let lastVolume = 0.5; 
+let lastVolume = 0; 
 let isCapturing = false;
 let streamSource = null;
 
@@ -91,9 +91,9 @@ function initAudioEngine() {
     
     gainNode = audioContext.createGain();
     
-    gainNode.gain.value = 0.5; 
-    volSlider.value = 0.5;
-    updateMuteIcon(0.5);
+    gainNode.gain.value = 0; 
+    volSlider.value = 0;
+    updateMuteIcon(0);
     
     connectToGraph(audioEl, true);
     
