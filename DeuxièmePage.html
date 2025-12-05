@@ -56,7 +56,7 @@
                     <div id="dialogue-next">▶</div>
                 </div>
                 <div class="button-group">
-                    <a href="page-suivante.html" id="next-page-btn" class="btn-outline"
+                    <a href="DeuxièmePage.html" id="next-page-btn" class="btn-outline"
                         style="display: none;">Suivant</a>
                 </div>
             </div>
@@ -93,50 +93,53 @@
                 burger.classList.toggle('open');
             }
             const dialogues = [
-                "Ils arrivent devant le bureau de la proviseure.",
-                "<b>Prof de techno</b> : Madame Pavoshko, on voulait reparler des ordinateurs.",
-                "<b>Pavoshko</b> : On a déjà parlé de ça. Je NE veux PAS tout réinstaller sur ces vieux PC. On n’a ni le budget, ni le temps.",
-                "<b>Robert</b> : Mais justement ! Linux est gratuit !",
-                "<b>Alice</b> : Et il utilise beaucoup moins de ressources que Windows 11. Du coup, vos “vieux” PC redeviennent rapides.",
-                "<b>Robert</b> : Vous savez que racheter des PC neufs, plus les licences Windows et Microsoft 365… ça coûterait une fortune ?",
-                "<b>Alice</b> : Sans compter que les grandes entreprises ramassent plein de données sur nous. Microsoft, Google… ils collectent tout : habitudes, profils, recherches…",
-                "<b>Robert</b> : Et c’est eux qui contrôlent presque tout : Microsoft a genre 70% des ordinateurs de bureau, et pour le cloud, c’est contrôlé à 66 % par trois entreprises : Amazon, Microsoft et Google.",
-                "<b>Alice</b> : On devient dépendants d’eux, alors qu’on pourrait être autonomes.",
-                "<b>Pavoshko</b> : Hmm… Je vois. Mais les élèves ne vont jamais accepter ça c’est bien trop dur à utiliser. Et ne parlons pas des professeurs qui ne veulent pas changer toutes leurs habitudes…",
-                "<b>Robert</b> : C’est aussi simple à utiliser que Windows, on va aller leur parler et les convaincre."
+                { text: "Ils arrivent devant le bureau de la proviseure.", image: "pavoshko_et_les_2_lyceens.webp" },
+                { text: "<b>Prof de techno</b> : Madame Pavoshko, on voulait reparler des ordinateurs.", image: "pavoshko_et_les_2_lyceens.webp" },
+                { text: "<b>Pavoshko</b> : On a déjà parlé de ça. Je NE veux PAS tout réinstaller sur ces vieux PC. On n’a ni le budget, ni le temps.", image: "pavoshko_et_les_2_lyceens.webp" },
+                { text: "<b>Robert</b> : Mais justement ! Linux est gratuit !", image: "pavoshko_et_les_2_lyceens.webp" },
+                { text: "<b>Alice</b> : Et il utilise beaucoup moins de ressources que Windows 11. Du coup, vos “vieux” PC redeviennent rapides.", image: "pavoshko_et_les_2_lyceens.webp" },
+                { text: "<b>Robert</b> : Vous savez que racheter des PC neufs, plus les licences Windows et Microsoft 365… ça coûterait une fortune ?", image: "pavoshko_et_les_2_lyceens.webp" },
+                { text: "<b>Alice</b> : Sans compter que les grandes entreprises ramassent plein de données sur nous. Microsoft, Google… ils collectent tout : habitudes, profils, recherches…", image: "pavoshko_et_les_2_lyceens.webp" },
+                { text: "<b>Robert</b> : Et c’est eux qui contrôlent presque tout : Microsoft a genre 70% des ordinateurs de bureau, et pour le cloud, c’est contrôlé à 66 % par trois entreprises : Amazon, Microsoft et Google.", image: "pavoshko_et_les_2_lyceens.webp" },
+                { text: "<b>Alice</b> : On devient dépendants d’eux, alors qu’on pourrait être autonomes.", image: "pavoshko_et_les_2_lyceens.webp" },
+                { text: "<b>Pavoshko</b> : Hmm… Je vois. Mais les élèves ne vont jamais accepter ça c’est bien trop dur à utiliser. Et ne parlons pas des professeurs qui ne veulent pas changer toutes leurs habitudes…", image: "pavoshko_et_les_2_lyceens.webp" },
+                { text: "<b>Robert</b> : C’est aussi simple à utiliser que Windows, on va aller leur parler et les convaincre.", image: "pavoshko_et_les_2_lyceens.webp" },
+                { text: "Alice et Robert arrivent en salle des profs, bien déterminés à faire bouger les choses.", image: "pavoshko_et_les_2_lyceens.webp" },
+                { text: "<b>Prof de maths</b> : Linux ? Encore un truc compliqué, ça…", image: "pavoshko_et_les_2_lyceens.webp" },
+                { text: "<b>Robert</b> : Mais non monsieur ! Et puis, ça ferait durer les ordinateurs beaucoup plus longtemps.", image: "pavoshko_et_les_2_lyceens.webp" },
+                { text: "<b>Alice</b> : Et ça réduirait le besoin d’en racheter ! C’est bon pour l’environnement et pour le budget.", image: "pavoshko_et_les_2_lyceens.webp" },
+                { text: "<b>Prof de maths</b> : Bon… prouvez-moi que vous êtes sérieux. Résolvez-moi ça.", image: "pavoshko_et_les_2_lyceens.webp" },
             ];
-
             let index = 0;
             let charIndex = 0;
             let isTyping = false;
 
+            const imagePlaceholder = document.querySelector(".image-placeholder");
             const textBox = document.getElementById("dialogue-text");
-            const nextBtn = document.getElementById("dialogue-next"); // flèche pour passer dialogues
-            const nextPageBtn = document.getElementById("next-page-btn"); // bouton page suivante
+            const nextBtn = document.getElementById("dialogue-next");
+            const nextPageBtn = document.getElementById("next-page-btn");
 
             function typeDialogueHTML() {
                 isTyping = true;
                 const current = dialogues[index];
-                textBox.innerHTML = current.substring(0, charIndex);
+                textBox.innerHTML = current.text.substring(0, charIndex);
                 charIndex++;
 
-                if (charIndex <= current.length) {
+                if (charIndex <= current.text.length) {
                     setTimeout(typeDialogueHTML, 20);
                 } else {
                     isTyping = false;
+                    imagePlaceholder.style.backgroundImage = `url('${current.image}')`;
 
-                    // La flèche n'apparaît que si ce n'est pas le dernier dialogue
                     if (index < dialogues.length - 1) {
                         nextBtn.style.display = "block";
                     } else {
-                        // Dernier dialogue : cacher la flèche et afficher le bouton "Suivant" pour la page suivante
                         nextBtn.style.display = "none";
                         nextPageBtn.style.display = "block";
                     }
                 }
             }
 
-            // Passe au dialogue suivant
             function nextDialogue() {
                 if (isTyping) return;
 
@@ -146,16 +149,11 @@
                     charIndex = 0;
                     typeDialogueHTML();
                 }
-                // Si on est au dernier dialogue, ne rien faire
             }
 
-            // Clic n'importe où pour passer au dialogue suivant
             document.addEventListener("click", nextDialogue);
-
-            // Clic sur la flèche pour passer au dialogue suivant
             nextBtn.addEventListener("click", nextDialogue);
 
-            // Lancement du premier dialogue
             typeDialogueHTML();
         </script>
 

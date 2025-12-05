@@ -13,21 +13,35 @@
 
 body {
     font-family: "Pixellari", monospace;
-    background-image: url("background_retro.webp");
+    background-color: #22223B;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     color: #EADEDA;
     line-height: 1.6;
 }
+#interactive-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /* Place le canvas derrière le contenu */
+    pointer-events: auto;
+    /* Permet l'interaction souris */
+}
 
+/* --- HEADER & NAVIGATION --- */
 header {
-    background: #EADEDA;
+    background: rgba(234, 222, 218, 0.95);
+    /* Légère transparence pour voir les particules */
     padding: 20px 40px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     position: sticky;
     top: 0;
     z-index: 100;
+    backdrop-filter: blur(5px);
 }
 
 .header-container {
@@ -38,6 +52,10 @@ header {
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
+}
+
+.header-container a {
+    text-decoration: none;
 }
 
 
@@ -121,7 +139,7 @@ header {
 nav {
     display: none;
     width: 100%;
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
     align-items: center;
 }
@@ -133,11 +151,13 @@ nav.active {
 nav ul {
     list-style: none;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
     width: 100%;
-    gap: 10px;
+    gap: 120px;
     margin: 0;
     padding: 0;
+
 }
 
 nav a {
@@ -152,7 +172,8 @@ nav a {
     text-align: center;
 }
 
-nav a:hover {
+nav a:hover,
+nav a.active-link {
     background: #B58AFF;
     color: white;
     border-color: #B58AFF;
@@ -165,18 +186,28 @@ nav a:hover {
     }
 }
 
-
+/* --- STRUCTURE PRINCIPALE --- */
 .container {
-    max-width: 1500px;
-    margin: 0;
+    max-width: 2000px;
+    margin: 0 auto;
     padding: 60px 40px;
     flex: 1;
+    width: 100%;
+
+    zoom: 0.60;
+
 }
 
+/* Style Glassmorphism pour les sections afin de voir le visualizer derrière */
 .content-section {
-    background: rgba(234, 222, 218, 0.95);
+    background-image: url("fond_lycee_pixel.webp");
+    background-repeat: no-repeat;
+    /* Plus transparent */
+    backdrop-filter: blur(10px);
+
     padding: 60px 40px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .content-section h2 {
@@ -190,42 +221,61 @@ nav a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 0px;
 }
 
-.image-placeholder {
+* .image-placeholder {
     width: 100%;
-    max-width: 500px;
-    height: 500px;
-    background: linear-gradient(135deg, #e0e0e0, #f5f5f5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
+
+    max-width: 1500px;
+
+    /* --- VERIFIE BIEN QUE CETTE LIGNE EST PRESENTE --- */
+    background-image: url("deux_lyceens_pixel.webp");
+    /* ------------------------------------------------- */
+
+    /* Les paramètres pour bien afficher l'image */
+    background-size: cover;
+    /* L'image couvre tout le bloc */
+    background-position: center;
+    /* L'image est centrée */
+    background-repeat: no-repeat;
+    /* Pas de répétition */
+
+    padding: 40px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    /* Très important : donne une hauteur minimale à la boite */
+    min-height: 600px;
 }
 
 
 .text-content {
-    max-width: 800px;
-    text-align: center;
+    max-width: 1500px;
+    text-align: justify;
+    background-color: rgba(234, 222, 218, 0.95);
+    /* Fond crème semi-transparent */
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .text-content p {
     color: #22223B;
-    font-size: 18px;
-    line-height: 1.8;
-    margin-bottom: 30px;
+    font-size: 23px;
+    /* J'ai légèrement augmenté la taille pour la lisibilité (était 14px) */
+    line-height: 1.5;
+    margin-bottom: 20px;
+    /* Réduit un peu la marge (était 30px) */
+    font-weight: 500;
+    /* Rend le texte un peu plus gras pour qu'il ressorte mieux */
 }
 
 .button-group {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
+    justify-content: center;
+    margin-top: 20px; /* espace entre bulle et bouton */
 }
 
 .btn-outline {
@@ -244,7 +294,7 @@ nav a:hover {
 .btn-outline:hover {
     background: linear-gradient(135deg, #B58AFF, #8AFF5B);
     color: white;
-    border: 3px solid #22223B;
+    border-color: transparent;
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(181, 138, 255, 0.4);
 }
@@ -252,6 +302,7 @@ nav a:hover {
 .hero {
     text-align: center;
     padding: 80px 20px;
+    /* Ajout d'un fond glass pour le hero aussi si nécessaire, sinon texte simple */
 }
 
 .hero h2 {
@@ -261,7 +312,8 @@ nav a:hover {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(2px 2px 0 #22223B) drop-shadow(-2px -2px 0 #22223B) drop-shadow(2px -2px 0 #22223B) drop-shadow(-2px 2px 0 #22223B) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+    /* Ombre modifiée pour lisibilité sur fond sombre */
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
 }
 
 .hero p {
@@ -271,8 +323,13 @@ nav a:hover {
     margin-left: auto;
     margin-right: auto;
     color: #EADEDA;
+    filter: drop-shadow(2px 2px 0 #22223B) drop-shadow(-2px -2px 0 #22223B) drop-shadow(2px -2px 0 #22223B) drop-shadow(-2px 2px 0 #22223B) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    /* Meilleure lisibilité */
 }
 
+/* --- BOUTONS --- */
 .btn {
     display: inline-block;
     padding: 15px 35px;
@@ -283,6 +340,7 @@ nav a:hover {
     font-weight: 600;
     transition: all 0.3s;
     border: 2px solid #B58AFF;
+    cursor: pointer;
 }
 
 .btn:hover {
@@ -304,23 +362,129 @@ nav a:hover {
     box-shadow: 0 8px 20px rgba(138, 255, 91, 0.3);
 }
 
-.btn-neon {
-    background: transparent;
+/* --- CONTROLES AUDIO VISUALIZER (Nouveau) --- */
+/* --- CONTROLES AUDIO VISUALIZER --- */
+.ui-container {
+    /* PAR DÉFAUT (MOBILE) : Fixé en bas de l'écran */
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 25px;
+    /* Un peu plus compact */
+
+    background: rgba(34, 34, 59, 0.9);
+    /* Fond sombre opaque pour bien ressortir sur le header clair */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(181, 138, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+/* Cache les contrôles quand le menu est ouvert */
+.ui-container.hidden {
+    opacity: 0;
+    pointer-events: none;
+    /* Empêche de cliquer dessus quand c'est invisible */
+    visibility: hidden;
+}
+
+/* SUR ORDINATEUR (Grand écran) : Centré dans le header */
+@media (min-width: 969px) {
+    .header-container {
+        position: relative;
+        /* Nécessaire pour le centrage absolu des enfants */
+    }
+
+    .ui-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        bottom: auto;
+        /* On annule la position basse */
+
+        padding: 8px 20px;
+        /* Encore plus fin pour rentrer dans le header */
+        box-shadow: none;
+        /* Moins d'ombre nécessaire dans le header */
+    }
+}
+
+.volume-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.vol-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
     color: #EADEDA;
-    border-color: #EADEDA;
+    padding: 0;
 }
 
-.btn-neon:hover {
-    background: #EADEDA;
+/* Style du Slider personnalisé */
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100px;
+    height: 6px;
+    background: rgba(234, 222, 218, 0.2);
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #B58AFF;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+.separator {
+    width: 1px;
+    height: 24px;
+    background: rgba(234, 222, 218, 0.2);
+}
+
+.capture-btn {
+    background: transparent;
+    border: 1px solid #8AFF5B;
+    color: #8AFF5B;
+    padding: 8px 16px;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 14px;
+}
+
+.capture-btn:hover,
+.capture-btn.capture-active {
+    background: #8AFF5B;
     color: #22223B;
-    box-shadow: 0 8px 20px rgba(234, 222, 218, 0.3);
+    box-shadow: 0 0 15px rgba(138, 255, 91, 0.4);
 }
 
+/* --- FOOTER --- */
 footer {
-    background: #EADEDA;
+    background: rgba(234, 222, 218, 0.95);
     color: #22223B;
     padding: 60px 40px 30px;
-    margin-top: 80px;
+    margin-top: auto;
+    /* Pousse le footer en bas */
 }
 
 .footer-container {
@@ -386,6 +550,21 @@ footer {
     box-shadow: 0 5px 15px rgba(181, 138, 255, 0.5);
 }
 
+/* --- UTILITAIRES --- */
+/* Empêche la sélection de texte (utile pour le visualiseur) */
+.unselectable {
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE/Edge */
+    user-select: none;
+    /* Standard */
+    cursor: default;
+    /* Curseur par défaut au lieu du curseur de texte */
+}
+
 .credit-boxnom {
     display: flex;
     flex-wrap: wrap;
@@ -409,7 +588,8 @@ footer {
 }
 
 .merci {
-    margin-top: -70px;
+    padding-bottom: 30px;
+    margin-top: -90px;
     text-align: center;
     font-size: 68px;
     margin-bottom: 20px;
@@ -418,4 +598,44 @@ footer {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     filter: drop-shadow(2px 2px 0 #22223B) drop-shadow(-2px -2px 0 #22223B) drop-shadow(2px -2px 0 #22223B) drop-shadow(-2px 2px 0 #22223B) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+.credith2 {
+    margin-top: -50px;
+
+}
+
+/* --- BOITE DE DIALOGUE STYLE POKÉMON --- */
+#dialogue-box {
+    width: 600px;                /* largeur fixe */
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 4px solid #22223B;
+    padding: 20px 30px;
+    font-size: 18px;
+    color: #22223B;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    position: relative;          /* IMPORTANT → pour placer la flèche */
+    margin-bottom: 30px; /* ← ajoute cet espace sous la bulle */
+}
+
+#dialogue-text {
+    white-space: normal;
+    word-wrap: break-word;
+    line-height: 1.5;
+}
+
+#dialogue-next {
+    position: absolute;
+    bottom: 5px;               /* toujours en bas */
+    right: 20px;                /* toujours à droite */
+    font-size: 22px;
+    opacity: 0.8;
+    cursor: pointer;
+    user-select: none;
+    transition: opacity 0.2s;
+}
+
+#dialogue-next:hover {
+    opacity: 1;
 }
