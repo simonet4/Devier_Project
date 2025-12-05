@@ -101,9 +101,16 @@
         function toggleMenu() {
             const nav = document.getElementById('mainNav');
             const burger = document.getElementById('burger');
+            // On sélectionne aussi le conteneur des contrôles audio
+            const ui = document.querySelector('.ui-container');
 
             nav.classList.toggle('active');
             burger.classList.toggle('open');
+            
+            // Si la barre de contrôle existe sur cette page, on la cache/affiche
+            if (ui) {
+                ui.classList.toggle('hidden');
+            }
         }
     </script>
 
