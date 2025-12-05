@@ -26,7 +26,7 @@ Nous avons intégré un Snake satirique qui dénonce la collecte de données, ca
     * **Nourriture :** Bases de données personnelles.
     * **Corps :** Pièces de monnaie (le capital).
     * **Fond :** Code "Matrix" vert.
-* **Activation :** *(Cliquez sur le logo NIRD 5 fois / Ou appuyez sur la touche 'S' / Ou via l'url `snake.html`)*.
+* **Activation :** *(Cliquez sur le titre jeu snake dans le footer de la page!).
 
 ### 2. 🤖 Défi VIVERIS : "Chat'bruti"
 **Objectif :** Créer un chatbot "complètement à côté de la plaque".
