@@ -91,3 +91,18 @@ document.getElementById("chat-form").addEventListener("submit", function(e) {
     // Reset champ
     input.value = "";
 });
+
+// Fermer le chat en cliquant en dehors
+document.addEventListener("click", function (event) {
+    let chatBox = document.getElementById("chat-box");
+    let chatIcon = document.getElementById("chat-icon");
+
+    // Si le chat est ouvert et qu'on clique ailleurs
+    if (
+        chatBox.classList.contains("open") &&
+        !chatBox.contains(event.target) &&
+        !chatIcon.contains(event.target)
+    ) {
+        chatBox.classList.remove("open");
+    }
+});
