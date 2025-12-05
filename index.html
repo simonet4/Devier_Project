@@ -60,9 +60,12 @@
     <footer>
         <div class="footer-container">
             <div class="footer-section">
-                <h3>NIRD</h3>
-                <p>Lycée Ada Lovelace</p>
-                <p>Excellence et innovation depuis 2024</p>
+                <h3>NIRD et sources</h3>
+                <a href = "https://nird.forge.apps.education.fr/" target="_blank">Site officiel de la démarche NIRD</a>
+                <a href = "https://video.echirolles.fr/w/hVykGUtRZqRen6eiutqRvQ" target="_blank">Vidéo : les logiciels libres</a>
+                <a href = "https://www.radiofrance.fr/franceinter/podcasts/le-grand-reportage-de-france-inter/le-grand-reportage-du-mardi-14-octobre-2025-4136495" target="_blank">Podcast : les logiciels libres</a>
+                <a href = "https://www.youtube.com/watch?v=76T8oubek-c" target="_blank">Vidéo : jeter des milliers d'ordinateurs ?</a>
+                <a href = "https://www.youtube.com/watch?v=S6GLqkhykmA" target="_blank">Vidéo : l'ordinateur obsolète</a>
             </div>
 
             <div class="footer-section">
@@ -75,25 +78,26 @@
             </div>
 
             <div class="footer-section">
-                <h3>Contact</h3>
-                <a href="mailto:contact@nird.fr">contact@nird.fr</a>
-                <a href="tel:+33123456789">+33 1 23 45 67 89</a>
-                <p>123 Rue de l'Innovation<br>31000 Toulouse</p>
+                <h3>Jeu snake</h3>
+                <a href="#" data-popup="J't'ai bien eu !">Je suis le vrai jeu snake !</a>
+                <a href="#" data-popup="Eh bien enfait... non.">Non, c'est moi !</a>
+                <a href="#" data-popup="C'était vraiment pas moi.">En tout cas, c'est pas moi.</a>
+                <a href="#" data-popup="Ah bon ? C'est pas moi...">Ben oui, c'est moi !</a>
             </div>
+            <script>
+                document.querySelectorAll('a[data-popup]').forEach(link => {
+                    link.addEventListener('click', function(event) {
+                        event.preventDefault(); // Empêche le comportement par défaut du lien
+                        const message = this.getAttribute('data-popup'); // Récupère le texte
+                        alert(message); // Affiche la popup
+                    });
+                });
+            </script>
 
-            <div class="footer-section">
-                <h3>Suivez-nous</h3>
-                <div class="social-links">
-                    <a href="#" title="Facebook">F</a>
-                    <a href="#" title="Twitter">T</a>
-                    <a href="#" title="Instagram">I</a>
-                    <a href="#" title="LinkedIn">L</a>
-                </div>
-            </div>
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2024 NIRD - Lycée Ada Lovelace. Tous droits réservés.</p>
+            <p>&copy; 2025 Dev'ier - IUT Informatique de Toulouse. Tous droits réservés.</p>
         </div>
     </footer>
 
