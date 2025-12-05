@@ -20,6 +20,10 @@ body {
     flex-direction: column;
     overflow-x: hidden;
     /* Évite les scrollbars horizontales */
+
+    /* Cela réduit tout à 85% de la taille originale */
+    /* Alternative pour Firefox qui ne supporte pas toujours "zoom" : */
+
 }
 
 /* --- CANVAS VISUALIZER --- */
@@ -194,7 +198,9 @@ nav a.active-link {
     padding: 60px 40px;
     flex: 1;
     width: 100%;
-    zoom : 0.6;
+
+    zoom: 0.60;
+
 }
 
 /* Style Glassmorphism pour les sections afin de voir le visualizer derrière */
@@ -221,12 +227,13 @@ nav a.active-link {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 0px;
 }
 
 * .image-placeholder {
     width: 100%;
-    max-width: 900px;
+
+    max-width: 1500px;
 
     /* --- VERIFIE BIEN QUE CETTE LIGNE EST PRESENTE --- */
     background-image: url("deux_lyceens.webp");
@@ -253,7 +260,7 @@ nav a.active-link {
 
 
 .text-content {
-    max-width: 800px;
+    max-width: 1500px;
     text-align: justify;
     background-color: rgba(234, 222, 218, 0.95);
     /* Fond crème semi-transparent */
@@ -264,7 +271,7 @@ nav a.active-link {
 
 .text-content p {
     color: #22223B;
-    font-size: 16px;
+    font-size: 23px;
     /* J'ai légèrement augmenté la taille pour la lisibilité (était 14px) */
     line-height: 1.5;
     margin-bottom: 20px;
@@ -389,12 +396,15 @@ nav a.active-link {
     z-index: 1000;
     transition: all 0.3s ease;
 }
+
 /* Cache les contrôles quand le menu est ouvert */
 .ui-container.hidden {
     opacity: 0;
-    pointer-events: none; /* Empêche de cliquer dessus quand c'est invisible */
+    pointer-events: none;
+    /* Empêche de cliquer dessus quand c'est invisible */
     visibility: hidden;
 }
+
 /* SUR ORDINATEUR (Grand écran) : Centré dans le header */
 @media (min-width: 969px) {
     .header-container {
@@ -608,6 +618,7 @@ footer {
 
 .credith2 {
     margin-top: -50px;
+
 }
 
 /* --- BOITE DE DIALOGUE STYLE POKÉMON --- */
