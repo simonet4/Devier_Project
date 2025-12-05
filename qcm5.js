@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // debug: confirme qu'on redirige
         console.log("qcm: redirection vers point_culminant.html");
         // utilise assign (équivalent) ; utilise chemin relatif
-        location.assign("crédit.html");
+        location.assign("crédits.html");
     });
 
 });
