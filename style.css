@@ -1,3 +1,7 @@
+/* =========================================
+   STYLE.CSS - FUSIONNÉ
+   ========================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -6,21 +10,37 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url("image.webp");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    /* On remplace l'image.webp par une couleur de fond solide sombre 
+       pour que le canvas se voit bien par dessus */
+    background-color: #22223B; 
     color: #EADEDA;
     line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden; /* Évite les scrollbars horizontales */
 }
 
+/* --- CANVAS VISUALIZER --- */
+#interactive-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Place le canvas derrière le contenu */
+    pointer-events: auto; /* Permet l'interaction souris */
+}
+
+/* --- HEADER & NAVIGATION --- */
 header {
-    background: #EADEDA;
+    background: rgba(234, 222, 218, 0.95); /* Légère transparence pour voir les particules */
     padding: 20px 40px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     position: sticky;
     top: 0;
     z-index: 100;
+    backdrop-filter: blur(5px);
 }
 
 .header-container {
@@ -90,27 +110,12 @@ header {
     transition: all 0.3s ease;
 }
 
-#burger::before {
-    top: -8px;
-}
+#burger::before { top: -8px; }
+#burger::after { top: 8px; }
 
-#burger::after {
-    top: 8px;
-}
-
-#burger.open {
-    background: transparent;
-}
-
-#burger.open::before {
-    transform: rotate(45deg);
-    top: 0;
-}
-
-#burger.open::after {
-    transform: rotate(-45deg);
-    top: 0;
-}
+#burger.open { background: transparent; }
+#burger.open::before { transform: rotate(45deg); top: 0; }
+#burger.open::after { transform: rotate(-45deg); top: 0; }
 
 nav {
     display: none;
@@ -120,9 +125,7 @@ nav {
     align-items: center;
 }
 
-nav.active {
-    display: flex;
-}
+nav.active { display: flex; }
 
 nav ul {
     list-style: none;
@@ -149,7 +152,7 @@ nav a {
     text-align: center;
 }
 
-nav a:hover {
+nav a:hover, nav a.active-link {
     background: #B58AFF;
     color: white;
     border-color: #B58AFF;
@@ -157,24 +160,26 @@ nav a:hover {
 }
 
 @media (max-width: 968px) {
-    nav a {
-        font-size: 16px;
-    }
+    nav a { font-size: 16px; }
 }
 
-
+/* --- STRUCTURE PRINCIPALE --- */
 .container {
     max-width: 1500px;
-    margin: 0;
+    margin: 0 auto;
     padding: 60px 40px;
     flex: 1;
+    width: 100%;
 }
 
+/* Style Glassmorphism pour les sections afin de voir le visualizer derrière */
 .content-section {
-    background: rgba(234, 222, 218, 0.95);
+    background: rgba(234, 222, 218, 0.85); /* Plus transparent */
+    backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 60px 40px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .content-section h2 {
@@ -191,68 +196,10 @@ nav a:hover {
     gap: 10px;
 }
 
-.image-placeholder {
-    width: 100%;
-    max-width: 500px;
-    height: 500px;
-    background: linear-gradient(135deg, #e0e0e0, #f5f5f5);
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-
-.text-content {
-    max-width: 800px;
-    text-align: center;
-}
-
-.text-content p {
-    color: #22223B;
-    font-size: 18px;
-    line-height: 1.8;
-    margin-bottom: 30px;
-}
-
-.button-group {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.btn-outline {
-    display: block;
-    padding: 18px 40px;
-    background: transparent;
-    color: #22223B;
-    text-decoration: none;
-    text-align: center;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 18px;
-    transition: all 0.3s;
-    border: 3px solid #22223B;
-}
-
-.btn-outline:hover {
-    background: linear-gradient(135deg, #B58AFF, #8AFF5B);
-    color: white;
-    border-color: transparent;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(181, 138, 255, 0.4);
-}
-
-
 .hero {
     text-align: center;
     padding: 80px 20px;
+    /* Ajout d'un fond glass pour le hero aussi si nécessaire, sinon texte simple */
 }
 
 .hero h2 {
@@ -262,7 +209,8 @@ nav a:hover {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(2px 2px 0 #22223B) drop-shadow(-2px -2px 0 #22223B) drop-shadow(2px -2px 0 #22223B) drop-shadow(-2px 2px 0 #22223B) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+    /* Ombre modifiée pour lisibilité sur fond sombre */
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
 }
 
 .hero p {
@@ -272,8 +220,10 @@ nav a:hover {
     margin-left: auto;
     margin-right: auto;
     color: #EADEDA;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8); /* Meilleure lisibilité */
 }
 
+/* --- BOUTONS --- */
 .btn {
     display: inline-block;
     padding: 15px 35px;
@@ -285,6 +235,7 @@ nav a:hover {
     font-weight: 600;
     transition: all 0.3s;
     border: 2px solid #B58AFF;
+    cursor: pointer;
 }
 
 .btn:hover {
@@ -306,23 +257,112 @@ nav a:hover {
     box-shadow: 0 8px 20px rgba(138, 255, 91, 0.3);
 }
 
-.btn-neon {
-    background: transparent;
+/* --- CONTROLES AUDIO VISUALIZER (Nouveau) --- */
+/* --- CONTROLES AUDIO VISUALIZER --- */
+.ui-container {
+    /* PAR DÉFAUT (MOBILE) : Fixé en bas de l'écran */
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 25px; /* Un peu plus compact */
+    
+    background: rgba(34, 34, 59, 0.9); /* Fond sombre opaque pour bien ressortir sur le header clair */
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    border: 1px solid rgba(181, 138, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+/* SUR ORDINATEUR (Grand écran) : Centré dans le header */
+@media (min-width: 969px) {
+    .header-container {
+        position: relative; /* Nécessaire pour le centrage absolu des enfants */
+    }
+
+    .ui-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        bottom: auto; /* On annule la position basse */
+        
+        padding: 8px 20px; /* Encore plus fin pour rentrer dans le header */
+        box-shadow: none; /* Moins d'ombre nécessaire dans le header */
+    }
+}
+
+.volume-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.vol-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
     color: #EADEDA;
-    border-color: #EADEDA;
+    padding: 0;
 }
 
-.btn-neon:hover {
-    background: #EADEDA;
+/* Style du Slider personnalisé */
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100px;
+    height: 6px;
+    background: rgba(234, 222, 218, 0.2);
+    border-radius: 3px;
+    outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #B58AFF;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+
+.separator {
+    width: 1px;
+    height: 24px;
+    background: rgba(234, 222, 218, 0.2);
+}
+
+.capture-btn {
+    background: transparent;
+    border: 1px solid #8AFF5B;
+    color: #8AFF5B;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 14px;
+}
+.capture-btn:hover, .capture-btn.capture-active {
+    background: #8AFF5B;
     color: #22223B;
-    box-shadow: 0 8px 20px rgba(234, 222, 218, 0.3);
+    box-shadow: 0 0 15px rgba(138, 255, 91, 0.4);
 }
 
+/* --- FOOTER --- */
 footer {
-    background: #EADEDA;
+    background: rgba(234, 222, 218, 0.95);
     color: #22223B;
     padding: 60px 40px 30px;
-    margin-top: 80px;
+    margin-top: auto; /* Pousse le footer en bas */
 }
 
 .footer-container {
@@ -341,8 +381,7 @@ footer {
     font-weight: 700;
 }
 
-.footer-section p,
-.footer-section a {
+.footer-section p, .footer-section a {
     color: #22223B;
     text-decoration: none;
     line-height: 2;
@@ -389,6 +428,15 @@ footer {
     box-shadow: 0 5px 15px rgba(181, 138, 255, 0.5);
 }
 
+/* --- UTILITAIRES --- */
+/* Empêche la sélection de texte (utile pour le visualiseur) */
+.unselectable {
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE/Edge */
+    user-select: none;         /* Standard */
+    cursor: default;           /* Curseur par défaut au lieu du curseur de texte */
+}
 .credit-boxnom {
     display: flex;
     flex-wrap: wrap;
