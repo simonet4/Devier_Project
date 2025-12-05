@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Convaincre les profs NIRD</title>
+    <title>Début de l'histoire NIRD</title>
     <link href="style.css" rel="stylesheet" />
 </head>
 
@@ -56,8 +56,7 @@
                     <div id="dialogue-next">▶</div>
                 </div>
                 <div class="button-group">
-                    <a href="page-suivante.html" id="next-page-btn" class="btn-outline"
-                        style="display: none;">Suivant</a>
+                    <a href="qcm2.html" id="next-page-btn" class="btn-outline" style="display: none;">Suivant</a>
                 </div>
             </div>
         </div>
@@ -94,43 +93,41 @@
             }
             const dialogues = [
                 { text: "Alice et Robert arrivent en salle des profs, bien déterminés à faire bouger les choses.", image: "deux_lyceens.webp" },
-                { text: "<b>Prof de maths</b> : Linux ? Encore un truc compliqué, ça…", image: "deux_lyceens.webp" },
-                { text: "<b>Robert</b> : Mais non monsieur ! Et puis, ça ferait durer les ordinateurs beaucoup plus longtemps.", image: "deux_lyceens.webp" },
-                { text: "<b>Alice</b> : Et ça réduirait le besoin d’en racheter ! C’est bon pour l’environnement et pour le budget.", image: "deux_lyceens.webp" },
-                { text: "<b>Prof de maths</b> : Bon… prouvez-moi que vous êtes sérieux. Résolvez-moi ça.", image: "deux_lyceens.webp" },
+                { text: "<b>Prof de maths</b> : Linux ? Encore un truc compliqué, ça...", image: "prof_de_maths_et_deux_lyceens.webp" },
+                { text: "<b>Robert</b> : Mais non monsieur ! Et puis, ça ferait durer les ordinateurs beaucoup plus longtemps.", image: "prof_de_maths_et_deux_lyceens.webp" },
+                { text: "<b>Alice</b> : Et ça réduirait le besoin d’en racheter ! C’est bon pour l’environnement et pour le budget.", image: "prof_de_maths_et_deux_lyceens.webp" },
+                { text: "<b>Prof de maths</b> : Bon... prouvez-moi que vous êtes sérieux. Résolvez-moi ça.", image: "prof_de_maths_et_deux_lyceens.webp" },
             ];
-
             let index = 0;
             let charIndex = 0;
             let isTyping = false;
 
+            const imagePlaceholder = document.querySelector(".image-placeholder");
             const textBox = document.getElementById("dialogue-text");
-            const nextBtn = document.getElementById("dialogue-next"); // flèche pour passer dialogues
-            const nextPageBtn = document.getElementById("next-page-btn"); // bouton page suivante
+            const nextBtn = document.getElementById("dialogue-next");
+            const nextPageBtn = document.getElementById("next-page-btn");
 
             function typeDialogueHTML() {
                 isTyping = true;
                 const current = dialogues[index];
-                textBox.innerHTML = current.substring(0, charIndex);
+                textBox.innerHTML = current.text.substring(0, charIndex);
                 charIndex++;
 
-                if (charIndex <= current.length) {
+                if (charIndex <= current.text.length) {
                     setTimeout(typeDialogueHTML, 20);
                 } else {
                     isTyping = false;
+                    imagePlaceholder.style.backgroundImage = `url('${current.image}')`;
 
-                    // La flèche n'apparaît que si ce n'est pas le dernier dialogue
                     if (index < dialogues.length - 1) {
                         nextBtn.style.display = "block";
                     } else {
-                        // Dernier dialogue : cacher la flèche et afficher le bouton "Suivant" pour la page suivante
                         nextBtn.style.display = "none";
                         nextPageBtn.style.display = "block";
                     }
                 }
             }
 
-            // Passe au dialogue suivant
             function nextDialogue() {
                 if (isTyping) return;
 
@@ -140,16 +137,11 @@
                     charIndex = 0;
                     typeDialogueHTML();
                 }
-                // Si on est au dernier dialogue, ne rien faire
             }
 
-            // Clic n'importe où pour passer au dialogue suivant
             document.addEventListener("click", nextDialogue);
-
-            // Clic sur la flèche pour passer au dialogue suivant
             nextBtn.addEventListener("click", nextDialogue);
 
-            // Lancement du premier dialogue
             typeDialogueHTML();
         </script>
 

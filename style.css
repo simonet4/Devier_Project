@@ -541,9 +541,11 @@ input[type="range"]::-webkit-slider-thumb:hover {
     border: 4px solid #22223B;
     /* Contour bleu nuit */
     box-shadow: 0 0 30px rgba(34, 34, 59, 0.4);
-    max-width: 700px;            /* ⬅ Réduit */
+    max-width: 700px;
+    /* ⬅ Réduit */
     margin: 40px auto;
-    padding: 35px;               /* ⬅ Réduit */
+    padding: 35px;
+    /* ⬅ Réduit */
     background: #EADEDA;
     border-radius: 18px;
     border: 3px solid #22223B;
@@ -553,7 +555,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 /* ----- TITRE ----- */
 #qcm-container h2 {
-    font-size: 32px;             /* ⬅ Réduit */
+    font-size: 32px;
+    /* ⬅ Réduit */
     font-weight: 600;
     margin-bottom: 30px;
     text-align: center;
@@ -562,11 +565,13 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 /* ----- QUESTION BLOCS ----- */
 .qcm-question {
-    margin-bottom: 35px;         /* ⬅ Réduit */
+    margin-bottom: 35px;
+    /* ⬅ Réduit */
 }
 
 .q-title {
-    font-size: 24px;             /* ⬅ Réduit */
+    font-size: 24px;
+    /* ⬅ Réduit */
     font-weight: bold;
     color: #22223B;
     margin-bottom: 15px;
@@ -577,18 +582,23 @@ input[type="range"]::-webkit-slider-thumb:hover {
     display: flex;
     align-items: center;
     background: #ffffff;
-    padding: 18px;               /* ⬅ Réduit */
+    padding: 18px;
+    /* ⬅ Réduit */
     margin: 14px 0;
-    border-radius: 15px;         /* ⬅ Réduit */
-    border: 3px solid #22223B;   /* ⬅ Réduit */
-    font-size: 22px;             /* ⬅ Réduit */
+    border-radius: 15px;
+    /* ⬅ Réduit */
+    border: 3px solid #22223B;
+    /* ⬅ Réduit */
+    font-size: 22px;
+    /* ⬅ Réduit */
     cursor: pointer;
     transition: 0.25s;
     color: #22223B;
 }
 
 .q-option input[type="radio"] {
-    width: 26px;                 /* ⬅ Réduit */
+    width: 26px;
+    /* ⬅ Réduit */
     height: 26px;
     margin-right: 15px;
 }
@@ -603,13 +613,14 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 /* Sélection visuelle */
-/* Met en évidence l’option sélectionnée */
-.q-option input[type="radio"]:checked ~ label,
-.q-option input[type="radio"]:checked {
+.q-option input[type="radio"]:checked+span {
     font-weight: 900;
     color: #410554;
-}
+    text-decoration: underline;
+    color: #22223B;
+    border-color: #410554;
 
+}
 
 /* ----- BONNE RÉPONSE ----- */
 .qcm-correct {
@@ -639,13 +650,16 @@ input[type="range"]::-webkit-slider-thumb:hover {
     background: #410554;
     /* Violet profond */
 
-    padding: 18px;               /* ⬅ Réduit */
-    font-size: 26px;             /* ⬅ Réduit */
+    padding: 18px;
+    /* ⬅ Réduit */
+    font-size: 26px;
+    /* ⬅ Réduit */
     font-weight: 800;
     background: #410554;
     color: #EADEDA;
     border-radius: 15px;
-    border: 3px solid #22223B;   /* ⬅ Réduit */
+    border: 3px solid #22223B;
+    /* ⬅ Réduit */
     cursor: pointer;
     transition: 0.25s;
 }
@@ -660,13 +674,16 @@ input[type="range"]::-webkit-slider-thumb:hover {
 /* ----- ZONE DE RÉSULTAT ----- */
 #qcm-result {
     margin-top: 30px;
-    padding: 22px;               /* ⬅ Réduit */
+    padding: 22px;
+    /* ⬅ Réduit */
     border-radius: 15px;
-    font-size: 26px;             /* ⬅ Réduit */
+    font-size: 26px;
+    /* ⬅ Réduit */
     font-weight: 900;
     display: none;
     text-align: center;
-    border: 3px solid #22223B;   /* ⬅ Réduit */
+    border: 3px solid #22223B;
+    /* ⬅ Réduit */
 }
 
 /* Score bon */
@@ -680,6 +697,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
     background: #B58AFF;
     color: #410554;
 }
+
 /* ----- BOUTON FINIR LE PARCOURS ----- */
 #finish-btn {
     width: 100%;
@@ -689,7 +707,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
     font-weight: 800;
     border-radius: 15px;
     border: 3px solid #22223B;
-    background: #999;          /* Grisé quand désactivé */
+    background: #999;
+    /* Grisé quand désactivé */
     color: #EEE;
     cursor: not-allowed;
     opacity: 0.6;
@@ -810,12 +829,17 @@ footer {
 }
 
 /* Chaque item */
-.credit-boxnom > * {
-    display: flex;             /* active flex dans l’item */
-    align-items: center;       /* centre verticalement */
-    justify-content: center;   /* centre horizontalement */
-    text-align: center;        /* centre le texte sur plusieurs lignes */
-    padding: 10px;             /* optionnel */
+.credit-boxnom>* {
+    display: flex;
+    /* active flex dans l’item */
+    align-items: center;
+    /* centre verticalement */
+    justify-content: center;
+    /* centre horizontalement */
+    text-align: center;
+    /* centre le texte sur plusieurs lignes */
+    padding: 10px;
+    /* optionnel */
 }
 
 .credit-boxnom p {
