@@ -1,0 +1,238 @@
+/* Police globale */
+* {
+    font-family: "Nunito","Segoe UI", sans-serif !important;
+}
+
+
+/* -----------  PALETTE PROFESSIONNELLE  ------------ */
+/*
+Jaune principal : #ffe922
+Orange action : #e8904d
+Magenta : #a60053
+Fond doux : #f5f5f7
+Bulles : #fafafa
+Texte : #333
+*/
+
+
+/* -----------  ICÔNE FLOTTANTE  ----------- */
+#chat-icon {
+    position: fixed;
+    bottom: 2%;
+    right: 2%;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+#chat-icon img {
+    width: 8vw;
+    max-width: 60px;
+    min-width: 40px;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+#chat-icon img:hover {
+    transform: scale(1.08);
+}
+
+
+/* -----------  CONTAINER CHAT  ----------- */
+#chat-box {
+    position: fixed;
+    bottom: calc(2% + 80px);
+    right: 2%;
+    width: 430px;
+    height: 520px;
+
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0px 8px 25px rgba(0,0,0,0.15);
+
+    display: none;
+    flex-direction: column;
+
+    transform: scale(0.9);
+    opacity: 0;
+    transition: all 0.25s ease;
+    z-index: 9999;
+}
+
+#chat-box.open {
+    display: flex;
+    transform: scale(1);
+    opacity: 1;
+}
+
+
+/* HEADER */
+.chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* centre Moustache */
+    gap: 10px;               /* espace entre texte et image */
+
+    background: #ffbb33;
+    padding: 14px;
+    font-size: 22px;          /* Police agrandie */
+    font-weight: 700;
+    color: white;
+    text-align: center;
+
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+/* Texte du header */
+.header-title {
+    font-family: "Nunito", sans-serif;
+}
+
+/* Image à droite du texte */
+#chat-corner-icon {
+    width: 32px;      /* ajustable */
+    height: 32px;     /* carré propre */
+    margin-left: 6px; /* petit espace */
+    transform: none;  /* aucune rotation */
+}
+
+
+
+
+/* -----------  CORPS ----------- */
+chat-body, .chat-body {
+    flex: 1;
+    padding: 6px;
+    overflow-y: auto;
+    background: #f5f5f7;
+}
+
+
+/* -----------  MESSAGE UTILISATEUR ----------- */
+.user-msg {
+    background: #dedede;
+    padding: 10px 14px;
+    border-radius: 14px 14px 4px 14px;
+    margin: 8px 0;
+    margin-left: auto;
+    max-width: 80%;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+}
+
+
+/* -----------  MESSAGE BOT ----------- */
+.bot-line {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 14px;
+    margin-top: 10px;
+}
+
+.bot-avatar {
+    width: 80px;
+    height: 80px;
+    margin-right: 8px;
+    border-radius: 50%;
+}
+
+.bot-bubble {
+    background: #fafafa;
+    padding: 12px 14px;
+    border-radius: 14px;
+    border-left: 4px solid #ffbb33;
+    color: #333;
+    font-size: 14px;
+    line-height: 1.4;
+    max-width: 80%;
+}
+
+/* italique uniforme */
+.user-msg em,
+.bot-bubble em,
+.user-msg i,
+.bot-bubble i {
+    font-style: italic;
+    font-size: 14px !important;
+}
+
+
+
+/* -----------  FOOTER ----------- */
+.chat-footer {
+    padding: 12px;
+    display: flex;
+    gap: 10px;
+    background: white;
+
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top: 1px solid #eee;
+}
+
+.chat-footer input {
+    flex: 1;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 10px;
+    font-size: 14px;
+    outline: none;
+}
+
+.chat-footer input:focus {
+    border-color: #ffbb33;
+}
+
+.chat-footer button {
+    background: #ffbb33;
+    color: white ;
+    padding: 10px 18px;
+    font-weight: bold;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+    font-family: "Segoe UI", sans-serif;
+}
+
+.chat-footer button:hover {
+    background: #d67f42;
+}
+
+
+/* -----------  ANIMATION "..." ----------- */
+.typing {
+    width: 30px;
+    margin: 8px 0;
+    display: flex;
+    justify-content: left;
+}
+
+.dot {
+    width: 7px;
+    height: 7px;
+    margin-right: 4px;
+    background-color: #ffbb33;
+    border-radius: 50%;
+    animation: blink 1.4s infinite both;
+}
+
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes blink {
+    0%   { opacity: .2; }
+    50%  { opacity: 1; }
+    100% { opacity: .2; }
+}
+
+
+/* Avatar “en réflexion” (moustaches qui vibrent) */
+.bot-avatar.thinking {
+    animation: whiskers 0.5s infinite alternate ease-in-out;
+}
+
+@keyframes whiskers {
+    from { transform: translateX(0); }
+    to   { transform: translateX(3px); }
+}

@@ -53,6 +53,7 @@ header {
     gap: 20px;
 }
 
+
 .logo {
     display: flex;
     align-items: center;
@@ -433,4 +434,38 @@ footer {
     -ms-user-select: none;     /* IE/Edge */
     user-select: none;         /* Standard */
     cursor: default;           /* Curseur par défaut au lieu du curseur de texte */
+}
+.credit-boxnom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 90px;
+}
+
+.credit-boxnom p {
+    background: linear-gradient(135deg, #8c67cc 0%, #61b340 100%);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: bold;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.credit-boxnom p:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.merci {
+    margin-top: -70px;
+    text-align: center;
+    font-size: 68px;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #B58AFF, #8AFF5B);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(2px 2px 0 #22223B) drop-shadow(-2px -2px 0 #22223B) drop-shadow(2px -2px 0 #22223B) drop-shadow(-2px 2px 0 #22223B) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
 }

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NIRD - Visualiseur Interactif</title>
     <link href="style.css" rel="stylesheet" />
+    <link href="./chatbot/chat.css" rel="stylesheet"/>
 </head>
 
 <body class="unselectable">
@@ -108,5 +109,23 @@
 
     <script src="script.js"></script>
 
+    <!-- ChatBox -->
+    <div id="chat-icon">
+        <img src="./chatbot/chatbotreact.png" alt="Chat">
+    </div>
+    <div id="chat-box">
+        <div class="chat-header">
+            <span class="header-title">Moustache</span>
+            <img id="chat-corner-icon" src="./chatbot/pate.png" alt="icone">
+        </div>
+        <div class="chat-body"></div>
+        <form id="chat-form">
+            <div class="chat-footer">
+                <input type="text" id="user-message" name="message" placeholder="Écrire..." required>
+                <button type="submit">Envoyer</button>
+            </div>
+        </form>
+    </div>
+    <script src="./chatbot/chat.js"></script>
 </body>
 </html>
